@@ -1,0 +1,41 @@
+<div class="occupation">
+  <app-topbar
+    title="Información adicional"
+  ></app-topbar>
+
+  <div class="has-padding-20 is-relative">
+    <app-intersitial *ngIf="loading"></app-intersitial>
+    <h4>¿Cuál es tu ocupación?</h4>
+    <p>
+      Solicitud disponible solo para personas en Colombia
+    </p>
+
+    <div class="has-margin-top-30">
+      <div class="card card-option has-margin-top-10 has-margin-bottom-10 has-padding-10 flex-row align-items-center" [ngClass]="selected == 'asalariado' ? 'selected' : null" (click)="selected = 'asalariado'">
+        <mat-icon>work_outline</mat-icon>
+        <div class="flex-column has-margin-left-20">
+          <strong>Asalariado</strong>
+          <div>Con contrato laboral</div>
+        </div>
+      </div>
+      <div class="card card-option has-margin-top-10 has-margin-bottom-10 has-padding-10 flex-row align-items-center" [ngClass]="selected == 'independiente' ? 'selected' : null" (click)="selected = 'independiente'">
+        <mat-icon>person_outline</mat-icon>
+        <div class="flex-column has-margin-left-20">
+          <strong>Independiente</strong>
+          <div>Actividad sin contrato</div>
+        </div>
+      </div>
+      <div class="card card-option has-margin-top-10 has-margin-bottom-10 has-padding-10 flex-row align-items-center" [ngClass]="selected == 'pensionado' ? 'selected' : null" (click)="selected = 'pensionado'">
+        <mat-icon>accessibility_new</mat-icon>
+        <div class="flex-column has-margin-left-20">
+          <strong>Pensionado</strong>
+          <div>Jubilado de la actividad</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center has-margin-top-40">
+      <button class="btn btn-success" (click)="sendData()">Continuar</button>
+    </div>
+  </div>
+</div>

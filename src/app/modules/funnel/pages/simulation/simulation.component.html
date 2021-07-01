@@ -1,0 +1,64 @@
+<div class="simulation">
+  <app-topbar title="Simulación"></app-topbar>
+
+  <div class="has-padding-20 is-relative">
+    <app-intersitial *ngIf="loading"></app-intersitial>
+
+    <div class="text-center has-margin-bottom-30">
+      <h1 class="heading-1 mb-medium">¡Todo listo para comprar!</h1>
+      <h5><b> {{data?.Nombre || 'Nombre'}} </b> </h5>
+      <p class="text-center m-0">Recuerda que puedes utilizar un total de</p>
+      <h2 class="no-margin text-green-100 my-1">{{data?.MontoAprobado || availableAmount |
+        currency:'$':'symbol':'0.0-0'}}</h2>
+    </div>
+
+    <div class="has-margin-top-20">
+      <form [formGroup]="amountForm">
+        <p>Selecciona a continuación el monto que deseas utilizar para tu compra.</p>
+
+        <div class="mt-5">
+          <mat-form-field class="is-full-width">
+            <mat-label>Monto a solicitar (<strong>máx. {{data?.MontoAprobado || availableAmount |
+                currency:'$':'symbol':'0.0-0'}}</strong>)*</mat-label>
+            <input matInput minlenght="7" formControlName="Monto" placeholder="123,123" mask="separator.2"
+              thousandSeparator="," maxlength="13" autocomplete="off">
+          </mat-form-field>
+        </div>
+      </form>
+    </div>
+
+    <div class="text-center">
+      <button class="btn btn-success has-margin-auto my-2" (click)="calcCouta()" [disabled]="!amountForm.valid">Calcular
+        cuotas</button>
+      <br />
+      <br />
+      <form [formGroup]="calcform"  *ngIf="showDetails">
+        <p>Selecciona las cuotas.</p>
+        <div>
+          <mat-form-field style="width: 100%;">
+            <!-- <mat-label>Tipo de documento*</mat-label> -->
+            <mat-select formControlName="Cuotas"  >
+              <mat-option *ngFor="let option of RespuestaSimulaciones" [value]="option.IdSimulador">{{option.SimuladortTexto}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <p>Seleccionar fecha de recaudo.</p>
+        <div>
+          <mat-form-field style="width: 100%;">
+            <!-- <mat-label>Tipo de documento*</mat-label> -->
+            <mat-select formControlName="Tiempo" >
+              <mat-option *ngFor="let option of ciclosFac" [value]="option.IdCicloFacturacion">{{option.FechaFacturacion}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <button class="btn btn-success has-margin-auto my-2" (click)="sendCouta()" [disabled]="!calcform.valid">Confirmar cuotas</button>
+      </form>
+      <br>
+      <button class="btn btn-outline-success has-margin-auto my-2"  routerLink="/funnel/initial-query"
+        [disabled]="!amountForm.valid">Cancelar</button>
+    </div>
+  </div>
+
+ 
+
+</div>

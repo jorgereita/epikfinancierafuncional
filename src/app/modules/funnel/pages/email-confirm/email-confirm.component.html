@@ -1,0 +1,41 @@
+<div class="email-confirm">
+  <app-topbar
+    [hideMenuAtion]="true"
+    title="confirmar email"
+  ></app-topbar>
+
+  <div class="has-padding-20 text-center">
+    <app-intersitial *ngIf="loading"></app-intersitial>
+    <h1 class="heading-1 mb-medium">Mensaje Enviado</h1>
+    <br>
+    <img src="assets/images/funnel/phone.png" alt="send email">
+
+    <p>
+      Hemos enviado un mensaje al whatsapp del cliente.
+    </p>
+
+    <p>
+      <small>  <strong class="text-green-100">Puedes verificar si ya fue contestado</strong></small>
+    </p>
+
+    <div class="has-margin-top-30">
+      <button class="btn btn-success"  (click)="sendVerificar()">Verificar</button>
+      <br><br>
+      <button class="btn btn-success"  routerLink="/funnel/initial-query">Cancelar</button>
+    </div>
+
+    <!-- <div class="has-margin-top-20 text-center" *ngIf="!resending && !hideConfirmSender && showSender">
+      <p>¿El correo no llega?</p>
+      <a (click)="sendEmail()">Re-enviar correo de confirmación</a>
+    </div>
+
+    <div class="has-margin-top-20 text-center" *ngIf="resending">
+      <strong class="text-green-100">Re-enviando correo...</strong>
+    </div>
+
+    <div class="has-margin-top-20 text-center">
+      <p>Escribenos para ayudarte.</p>
+      <a href="https://api.whatsapp.com/send?phone=573203290127&text=Hola,%20necesito%20ayuda,%20tengo%20problemas%20con%20mi%20cuenta" target="_blank" rel="noopener noreferrer">¡Solucionar problemas!</a>
+    </div> -->
+  </div>
+</div>

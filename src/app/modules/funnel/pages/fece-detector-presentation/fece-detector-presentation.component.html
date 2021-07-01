@@ -1,0 +1,42 @@
+<div class="auth-data">
+  <app-topbar
+    [hideMenuAtion]="true"
+    title="Autorizaciones"
+  ></app-topbar>
+
+  <div class="content is-relative">
+    <app-intersitial *ngIf="loading"></app-intersitial>
+
+    <h1 class="heading-1 mb-big">Validación facial<br>del cliente</h1>
+
+    <img src="assets/images/funnel/facial-validation.png" alt="valid-id" class="message-icon mb-big">
+
+    <div class="sub-container mb-big">
+      <h2 class="heading-2 mb-big">
+        Recomendaciones:
+      </h2>
+
+      <ul class="list">
+        <li class="list__item mb-small">
+          <p class="label list__item-content">
+            <span class="list__item-content--text">Tomar la foto de frente con buena luz.</span>
+          </p>
+        </li>
+        <li class="list__item mb-small">
+          <p class="label list__item-content">
+            <span class="list__item-content--text">Retirar gafas y tapabocas en caso de tener.</span>
+          </p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="text-center">
+      <button *ngIf="!loading" class="btn btn-success has-margin-auto btn-block" type="submit" routerLink="/funnel/face-detector">TOMAR FOTO</button>
+      <button *ngIf="loading" class="btn btn-success has-margin-auto btn-block" type="submit" disabled>GUARDANDO...</button>
+      <br />
+      <br />
+      <button class="btn btn-outline-success has-margin-top-20 mx-auto btn-block" routerLink="/funnel/finish-flow" [queryParams]="{message: 'El proceso ha sido finalizado por el usuario'}">CANCELAR</button>
+    </div>
+
+  </div>
+</div>

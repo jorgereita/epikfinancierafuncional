@@ -1,0 +1,55 @@
+<div class="add-accounts">
+  <app-topbar
+    title="Recaudo"
+  ></app-topbar>
+
+  <div class="has-padding-20 is-relative">
+    <app-intersitial *ngIf="loading"></app-intersitial>
+
+
+    <div class="has-margin-top-30 text-center" >
+       
+      <h1 class="heading-1 mb-medium">Selecciona la cuenta para realizar el recaudo</h1>
+      <p>
+        Escoge una de tus cuentas para realizar el recaudo del crédito
+      </p>
+
+      <div class="has-margin-top-30">
+       <div class="card card-option has-margin-top-10 has-margin-bottom-10 has-padding-10 flex-row align-items-center" [ngClass]="selected == 'bancolombia-0440' ? 'selected' : null" (click)="selected = 'bancolombia-0440'">
+         <mat-icon>person_outline</mat-icon>
+         <div class="flex-column has-margin-left-20">
+           <strong>Bancolombia - **** 0440</strong>
+           <div>Cuenta de Ahorros</div>
+         </div>
+       </div>
+        <div class="card card-option has-margin-top-10 has-margin-bottom-10 has-padding-10 flex-row align-items-center" [ngClass]="selected == 'davivienda-0540' ? 'selected' : null" (click)="selected = 'davivienda-0540'">
+          <mat-icon>person_outline</mat-icon>
+          <div class="flex-column has-margin-left-20">
+            <strong>{{data?.AccountBank}} - **** {{data?.AccountNumber}}</strong>
+            <div>Cuenta de Ahorros</div>
+          </div>
+        </div>
+       <div class="card card-option has-margin-top-10 has-margin-bottom-10 has-padding-10 flex-row align-items-center" [ngClass]="selected == 'bancolombia-0480' ? 'selected' : null" (click)="selected = 'bancolombia-0480'">
+         <mat-icon>person_outline</mat-icon>
+         <div class="flex-column has-margin-left-20">
+           <strong>Bancolombia - **** 0480</strong>
+           <div>Cuenta Corriente</div>
+         </div>
+       </div>
+        <div class="card card-option has-margin-top-10 has-margin-bottom-10 has-padding-10 flex-row align-items-center" [ngClass]="selected == 'other' ? 'selected' : null" routerLink="/funnel/new-bank-account">
+          <mat-icon>dashboard_customize</mat-icon>
+          <div class="flex-column has-margin-left-20">
+            <strong>Añadir cuenta</strong>
+            <div>Añade una nueva cuenta</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center has-margin-top-30">
+      <button class="btn btn-success" (click)="sendData()" [disabled]="!addAccountForm.valid || !selected">Continuar</button>
+      <br /><br />
+      <button class="btn btn-outline-success" (click)="skip()">Saltar este paso</button>
+    </div>
+  </div>
+</div>

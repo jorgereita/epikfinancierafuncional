@@ -1,0 +1,30 @@
+<div class="query-loan-success">
+  <app-topbar
+    [hideMenuAtion]="true"
+    title="Resultado consulta"
+  ></app-topbar>
+
+  <div class="has-padding-20 is-relative">
+    <app-intersitial *ngIf="loading"></app-intersitial>
+
+    <div [style.height]="'auto'" class="has-padding-10 justify-center align-center flex-column">
+
+      <div class="text-center">
+        <h3>Hola, {{data?.PrimerNombre || 'Danny'}} {{data?.PrimerApellido || 'Viasus'}}</h3>
+
+        <h5 class="my-5">¡Felicidades! tienes preperfilado un monto de</h5>
+
+        <h2 class="no-margin text-green-100 my-1">{{data?.MontoAprobado || availableAmount | currency:'$':'symbol':'0.0-0'}}</h2>
+
+        <h5 class="my-5">¿Deseas continuar?</h5>
+
+        <div class="my-5">
+          <button class="btn btn-success mx-auto my-2" (click)="continue()">SOLICITAR CRÉDITO</button>
+          <br />
+          <button class="btn btn-success mx-auto my-2" (click)="finishFlow()">TERMINAR PROCESO</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

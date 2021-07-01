@@ -1,0 +1,103 @@
+// Material custom Theme
+@import url("https://use.fontawesome.com/releases/v5.0.7/css/all.css");
+@import "~bulma-helpers/css/bulma-helpers.css";
+@import "my-theme";
+@import '~material-bottom-nav';
+
+// Modules
+@import "styles/modules/variables";
+@import "styles/modules/buttons";
+@import "styles/modules/forms";
+@import "styles/modules/tipography";
+@import "styles/modules/common";
+@import "styles/modules/additional";
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #030e1d;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #46DB9E;
+  border: 2px solid;
+  border-radius: 25px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(63, 63, 63);
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  height: 100%;
+  box-sizing: border-box;
+  background: linear-gradient(0deg, rgba(160,159,148,1) 10%, rgba(230,230,230,1) 100%);
+  background-attachment: fixed;
+}
+
+/* if portrait mode is detected, rotate the entire site -90 degrees to hint rotating to landscape */
+//@media (orientation: landscape) {
+//  body {
+//    -webkit-transform: rotate(-90deg);
+//    -moz-transform: rotate(-90deg);
+//    -o-transform: rotate(-90deg);
+//    -ms-transform: rotate(-90deg);
+//    transform: rotate(-90deg);
+//  }
+//}
+
+.counter {
+  height: 65px!important;
+
+  button.btn.btn-primary {
+    background-color: $color-blue-100;
+    font-size: 1.5rem;
+    height: 50px;
+    border-radius: 5px;
+
+    &:hover,
+    &:active {
+      background-color: $color-black-500;
+    }
+  }
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: $content-padding;
+}
+
+.content-wide {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+}
+
+.content-strecht {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 3rem 0;
+  background-color: #e3e3e3;
+}

@@ -1,0 +1,44 @@
+<div class="loan-presentation">
+  <app-topbar
+    [hideMenuAtion]="true"
+    title="Consulta de clientes"
+  ></app-topbar>
+
+  <div class="content is-relative">
+    <app-intersitial *ngIf="loading"></app-intersitial>
+
+    <h1 class="text-black has-margin-top-30 heading-1 is-bold mx-auto is-full-width mb-big">Consulta de cliente</h1>
+
+    <div [style.height]="'auto'">
+
+      <div>
+        <form [formGroup]="personalInfoForm" (submit)="sendData()">
+<!--          <div>-->
+<!--            <mat-form-field style="width: 100%;">-->
+<!--              <mat-label>Tipo de documento*</mat-label>-->
+<!--              <mat-select formControlName="IdTipoIdentificacion" id="TipoDocumento">-->
+<!--                <mat-option *ngFor="let option of documentTypes" [value]="option.Id">{{option.Descripcion}}</mat-option>-->
+<!--              </mat-select>-->
+<!--            </mat-form-field>-->
+<!--          </div>-->
+
+          <div class="mb-big">
+            <label class="text-left label">N° de documento:</label>
+            <mat-form-field class="is-full-width">
+              <input matInput autocomplete="off" maxlength="10"
+                     formControlName="NumeroIdentificacion" type="tel" value="">
+            </mat-form-field>
+          </div>
+
+          <div class="has-margin-top-20 text-center">
+            <button *ngIf="!loading" class="btn btn-success has-margin-auto btn-block no-margin" type="submit" [disabled]="!personalInfoForm.valid">CONSULTAR CLIENTE</button>
+            <button *ngIf="loading" class="btn btn-success has-margin-auto btn-block no-margin" type="submit" disabled>Guardando...</button>
+            <div class="has-margin-top-10">
+              <button *ngIf="!loading" class="btn btn-outline-success has-margin-top-30 btn-block no-margin text-black" type="submit" routerLink="/funnel/agent-home">CANCELAR</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

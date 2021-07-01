@@ -1,0 +1,107 @@
+<div class="additional-data">
+  <app-topbar title="Datos adicionales"></app-topbar>
+
+  <div class="content is-relative">
+    <app-intersitial *ngIf="loading"></app-intersitial>
+
+    <div [style.height]="'auto'" class="justify-center align-center flex-column">
+
+      <h1 class="heading-1 mb-medium">Datos adicionales</h1>
+
+      <form [formGroup]="additionalDataForm" (submit)="sendData()" class="has-margin-top-20">
+        <div>
+          <label class="text-left label-small">Ingreso mensual*</label>
+          <mat-form-field style="width: 100%;">
+            <!--            <input matInput minlenght="7" formControlName="IngresoMensual" mask="separator.2" thousandSeparator="," maxlength="13" autocomplete="off">-->
+            <input matInput minlenght="7" formControlName="IngresoMensual" type="tel" maxlength="8" autocomplete="off"
+              style="font-weight: 600;">
+            <!--            <mat-select formControlName="Ingresos">-->
+            <!--              <mat-option *ngFor="let option of incomeList" [value]="option.Id">{{option.Descripcion}}</mat-option>-->
+            <!--            </mat-select>-->
+            <mat-icon matPrefix style="font-size: 18px; position:relative; top:4px; font-weight: 600;">attach_money
+            </mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <label class="text-left label-small">Ocupación</label>
+          <mat-form-field style="width: 100%;">
+            <!--            <input matInput minlenght="7" formControlName="Ocupacion" placeholder="Jefe de sistemas" mask="S*" maxlength="100" autocomplete="off">-->
+            <mat-select formControlName="IdActividadEconomica">
+              <mat-option *ngFor="let option of occupationList" [value]="option.Id">{{option.Descripcion}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <label class="text-left label-small">Antigüedad laboral*</label>
+          <mat-form-field style="width: 100%;">
+            <mat-select formControlName="IdAntiguedadLaboral">
+              <mat-option *ngFor="let option of laborarlAntiquityList" [value]="option.Id">{{option.Descripcion}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <label class="text-left label-small">Persona expuesta políticamente*</label>
+          <mat-form-field style="width: 100%;">
+            <mat-select formControlName="Pep">
+              <mat-option [value]="1">SÍ</mat-option>
+              <mat-option [value]="0">NO</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <label class="text-left label-small">¿Realiza operaciones en moneda extranjera?</label>
+          <mat-form-field style="width: 100%;">
+            <mat-select formControlName="MonedaExtranjera">
+              <mat-option [value]="1">SÍ</mat-option>
+              <mat-option [value]="0">NO</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <!--        <div>-->
+        <!--          <mat-form-field style="width: 100%;">-->
+        <!--            <mat-label>Código CIIU*</mat-label>-->
+        <!--            <mat-select formControlName="CodigoCIIU">-->
+        <!--              <mat-option *ngFor="let option of ciiuCodeList" [value]="option.Id">{{option.Descripcion}}</mat-option>-->
+        <!--            </mat-select>-->
+        <!--          </mat-form-field>-->
+        <!--        </div>-->
+
+        <!--        <div class="mb-3">-->
+        <!--          <strong>Persona Expuesta Politicamente*</strong>-->
+        <!--          <br />-->
+        <!--          <mat-radio-group aria-label="Select an option" [(ngModel)]="Pep" [ngModelOptions]="{standalone: true}">-->
+        <!--            <mat-radio-button [value]="1" class="mr-2">Sí</mat-radio-button>-->
+        <!--            <mat-radio-button [value]="0" class="mr-2">No</mat-radio-button>-->
+        <!--          </mat-radio-group>-->
+        <!--        </div>-->
+
+        <!--        <div class="my-3">-->
+        <!--          <strong>Operación en moneda extranjera*</strong>-->
+        <!--          <br />-->
+        <!--          <mat-radio-group aria-label="Select an option" [(ngModel)]="MonedaExtranjera" [ngModelOptions]="{standalone: true}">-->
+        <!--            <mat-radio-button [value]="1" class="mr-2">Sí</mat-radio-button>-->
+        <!--            <mat-radio-button [value]="0" class="mr-2">No</mat-radio-button>-->
+        <!--          </mat-radio-group>-->
+        <!--        </div>-->
+
+        <div class="has-margin-top-20 text-center">
+          <button *ngIf="!loading" class="btn btn-success has-margin-auto my-2 btn-block no-margin" type="submit"
+            [disabled]="!additionalDataForm.valid">Continuar</button>
+          <br><br>
+        
+          <button *ngIf="loading" class="btn btn-success has-margin-auto my-2 btn-block no-margin" type="submit"
+            disabled>Guardando...</button>
+          <br />
+          <br />
+          <button class="btn btn-outline-success my-2 btn-block no-margin" routerLink="/funnel/initial-query">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

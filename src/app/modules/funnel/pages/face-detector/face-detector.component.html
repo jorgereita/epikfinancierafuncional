@@ -1,0 +1,49 @@
+<div class="face-match-detector">
+  <app-topbar [hideMenuAtion]="true" title="Detección de rostro"></app-topbar>
+  <div class="face-detector-match" [style.height]="videoDimensions?.height + 'px'" style="width: 100%;">
+    <app-intersitial *ngIf="loading"></app-intersitial>
+    <!-- <lib-face-detector
+      selector=".face-detector-match"
+      placeholder="assets/images/funnel/take-picture-overlay.png"
+      [disableModels]="true"
+      (takePhoto)="takePhoto($event)"
+      [counter]="1"
+      hint="Ubique la cara dentro del óvalo"
+      buttonClasses="btn btn-success btn-block disabled is-uppercase"
+      counterClasses="content face-counter"
+    ></lib-face-detector> -->
+    <div *ngIf="!loading">
+      <img [src]="imageBack" class="backImg" alt="">
+      <div class="center">
+        <p class="title-cam">Ubique el rostro dentro del óvalo.</p>
+        <app-camera (pictureTaken)="handleImage1($event)"></app-camera>
+        <!-- <ng-container *ngIf="screenOn1 && webcamImage1 == null">
+          <app-camera (pictureTaken)="handleImage1($event)"></app-camera>
+        </ng-container>
+        <ng-container *ngIf="!screenOn1 || webcamImage1 !== null">
+          <img [src]="webcamImage1 !== null ? webcamImage1 : imageSrc1" class="circle" />
+        </ng-container>
+        <br /> -->
+
+        <!-- <button *ngIf="!screenOn1 || webcamImage1" type="button" mat-button style="background: #1c60a7; color: white"
+        (click)="toggleCamera1()">
+        Tomar Foto <i class="material-icons">add_a_photo</i>
+      </button> -->
+        <!-- <button *ngIf="screenOn1 && !webcamImage1" type="button" mat-button style="background: #262c5e; color: white"
+        (click)="cancelarCamera1()">
+        Cancelar <i class="material-icons">close</i>
+      </button> -->
+        <!-- <br> -->
+        <!-- <button   class="button-camera" type="button" mat-raised-button style="background: #1c60a7; color: white"
+      (click)="toggleCamera1()">
+      Tomar Foto <i class="material-icons">add_a_photo</i>
+    </button> -->
+        <!-- <button (click)="takePhoto()" class="button-camera" [disabled]="!webcamImage1 || waitSend" [ngStyle]="{  background: '#0168b3' }"
+        id="btnSendReport" mat-raised-button style="color: white; width: 100%">
+        Enviar foto
+      </button> -->
+      </div>
+    </div>
+
+  </div>
+</div>

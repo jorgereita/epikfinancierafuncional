@@ -1,0 +1,44 @@
+<div class="documents">
+  <app-topbar [hideMenuAtion]="true" title="Documentos"></app-topbar>
+
+  <div class="has-padding-20">
+    <app-intersitial *ngIf="loading"></app-intersitial>
+    <div>
+      <h1 class="heading-1 mb-medium">Formalización de documentos </h1>
+      <p><b>{{data?.Nombres}} </b></p>
+      <p class="text-center">
+        Se enviarán al email <b>{{data?.Email}}</b> y al celular <b>{{data?.Telefono}}</b> los siguientes documentos
+        para su aceptación :
+
+      </p>
+      <br>
+      <ul>
+        <b>-Autorización de Desembolso</b> <br>
+        <b>-Carta de Consentimiento Cliente</b><br>
+        <b>-Condiciones de Otorgamiento</b><br>
+        <b>-Pagaré</b><br>
+        <b>-Autorización Recaudo</b><br>
+      </ul>
+    </div>
+    <!-- 
+    <div class="columns is-mobile wrap has-margin-top-10 has-padding-10">
+      <div class="column is-half has-padding-10 text-center has-margin-bottom-10 has-cursor-pointer is-relative"
+        (click)="download()">
+        <img src="assets/images/funnel/contract.png" width="80" alt="icon" />
+        <div class="has-margin-top-10">
+          <strong class="text-green-100">Contrato</strong>
+        </div>
+        <div class="text-center has-margin-top-15">
+          <a href="#" download>Descargar</a>
+        </div>
+      </div>
+
+    </div> -->
+
+    <div class="text-center has-margin-top-10 has-margin-bottom-30">
+      <button class="btn btn-success" (click)="sendDocs()">Enviar documentos</button>
+      <br><br>
+      <button class="btn btn-success" routerLink="/funnel/initial-query">Cancelar</button>
+    </div>
+  </div>
+</div>

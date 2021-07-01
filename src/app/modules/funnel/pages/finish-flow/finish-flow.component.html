@@ -1,0 +1,36 @@
+<div class="finish-flow">
+  <app-topbar
+    title="Datos adicionales"
+  ></app-topbar>
+
+  <div class="content is-relative">
+    <app-intersitial *ngIf="loading"></app-intersitial>
+
+    <h1 class="heading-1 mb-big">¡Buena Noticia!</h1>
+
+    <img src="assets/images/funnel/credit-approved.png" alt="" class="message-icon-wide mb-big">
+
+    <p class="notification-text mb-big text-black">
+      <b>{{userData.Nombre}} <br>con {{ccType}}. {{userData.NumeroIdentificacion}} <br>tiene aprobado hasta</b>
+    </p>
+    <p class="notification-text mb-big text-black">
+      <b>$ {{cupo | currency}}</b>
+    </p>
+
+    <div class="text-center">
+      <button *ngIf="!loading" class="btn btn-success has-margin-auto btn-block" type="submit" (click)="sendOkCompra()" [queryParams]="{side: 'placeholder'}">COMPRAR</button>
+      <button *ngIf="loading" class="btn btn-success has-margin-auto btn-block" type="submit" disabled>GUARDANDO...</button>
+      <br />
+      <br />
+      <button class="btn btn-outline-success has-margin-top-20 mx-auto btn-block" routerLink="/funnel/initial-query" [queryParams]="{message: 'El proceso ha sido finalizado por el usuario'}">TERMINAR PROCESO</button>
+    </div>
+  </div>
+
+<!--  <h4 class="text-center">{{title || 'El proceso no se pudo completar. Intente nuevamente'}}</h4>-->
+
+<!--  <h4 class="text-center">{{message || 'El proceso no se pudo completar. Intente nuevamente'}}</h4>-->
+
+<!--  <div class="text-center mt-5">-->
+<!--    <button (click)="goHome()" class="btn btn-success"> TERMINAR PROCESO </button>-->
+<!--  </div>-->
+</div>

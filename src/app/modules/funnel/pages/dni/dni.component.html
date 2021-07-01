@@ -1,0 +1,15 @@
+<div class="dni-match" [style.height]="videoDimensions?.height + 'px'">
+  <app-dni-player
+    [stream]="currentStream"
+    [width]="videoDimensions?.width"
+    [height]="videoDimensions?.height"
+  ></app-dni-player>
+</div>
+
+<div style="margin: 50px auto;">
+  <h4 class="text-center">Ubica la cédula sobre una superficie plana, para mejorar el resultado.</h4>
+
+  <p class="text-center">
+    Mantén firme el documento sobre la superfice, tomarémos la foto de forma automática
+  </p>
+</div>

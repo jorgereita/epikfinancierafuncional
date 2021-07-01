@@ -1,0 +1,57 @@
+<div class="auth-data">
+  <app-topbar
+    [hideMenuAtion]="true"
+    title="Autorizaciones"
+  ></app-topbar>
+
+  <div class="content is-relative">
+    <app-intersitial *ngIf="loading"></app-intersitial>
+
+    <h1 class="heading-1 mb-big">Autorizaciones</h1>
+
+    <p class="text-center body-text text-black">
+      Al ingresar a la aplicación de EpikCrédito, la persona
+      identificada con la C.C. {{data.NumeroIdentificacion}}
+      autoriza el tratamiento de sus datos personales y consultas a centrales de riesgo:
+    </p>
+
+    <div [style.height]="'auto'">
+
+      <div>
+        <form [formGroup]="personalInfoForm" (submit)="sendData()" class="has-margin-top-20">
+          <div>
+            <mat-checkbox
+              id="auth"
+              class="amateur"
+              color="primary"
+              formControlName="AceptaTratamientoDatos">
+              <span class="label-bold">Autorizo a Epik para el tratamiento de mis datos personales <br />
+                <a href="/" class="text-link underline">Términos y condiciones</a>
+              </span>
+            </mat-checkbox>
+          </div>
+
+          <div class="has-margin-top-30">
+            <mat-checkbox
+              id="auth2"
+              class="amateur"
+              color="primary"
+              formControlName="AceptaConsultaCentrales">
+              <span class="label-bold">Autorizo a Epik para hacer las consultas necesarias de mi información crediticia <br />
+                <a href="/" class="text-link underline">Términos y condiciones</a>
+              </span>
+            </mat-checkbox>
+          </div>
+
+          <div class="has-margin-top-40 text-center">
+            <button *ngIf="!loading" class="btn btn-success has-margin-auto btn-block" type="submit" [disabled]="!personalInfoForm.valid">CONTINUAR</button>
+            <button *ngIf="loading" class="btn btn-success has-margin-auto btn-block" type="submit" disabled>GUARDANDO...</button>
+            <br />
+            <br />
+            <button class="btn btn-outline-success has-margin-top-20 mx-auto btn-block" routerLink="/funnel/finish-flow" [queryParams]="{message: 'El proceso ha sido finalizado por el usuario'}">CANCELAR</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

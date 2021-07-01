@@ -1,0 +1,109 @@
+<div class="start text-center">
+<!--  <div class="overlay"></div>-->
+
+  <div class="start__header">
+    <img src="assets/images/funnel/epik-logo.png" alt="epik logo" />
+  </div>
+
+  <div class="zi-2 start-bg">
+    <div *ngIf="type === 'validate'">
+      <div [ngStyle]="{'background':  ' url('+dataImg?.iconFrontLogin+') '}" style="width: 100px;height: 100px;margin-left: 33%;"></div>
+      <h3>Activar usuario</h3>
+      <p>
+        A continuación ingrese los datos de usuario y contraseña que enviamos a su correo
+      </p>
+    </div>
+
+    <div *ngIf="!type" style="text-align: center;">
+<!--      <div [ngStyle]="{'background': ' url(/assets/images/sign/logo.svg)'}" style="width: 100px;height: 100px;margin-left: 33%;"></div>-->
+      <h1 class="text-black has-margin-top-30 heading-1 is-bold">Ingreso</h1>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()" id="login-form" class="has-padding-20 radius-12">
+      <div class="d-flex flex-column">
+        <div class="is-full-width">
+          <label class="text-left label">Usuario:</label>
+          <mat-form-field class="is-full-width">
+            <input matInput formControlName="Usuario">
+            <mat-error *ngIf="f.Usuario.hasError('email') && !f.email.hasError('required')">
+              El correo no es válido
+            </mat-error>
+            <mat-error *ngIf="f.Usuario.hasError('required')">
+              El correo es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="is-full-width">
+          <label class="text-left label">Contraseña:</label>
+          <mat-form-field class="is-full-width">
+            <input matInput formControlName="Clave" [type]="hide ? 'text' : 'password'">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error *ngIf="f.Clave.hasError('minlength') && !f.Clave.hasError('required')">
+              La contraseña debe contener al menos 6 caracteres
+            </mat-error>
+            <mat-error *ngIf="f.Clave.hasError('required')">
+              La contraseña es requerida
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <mat-error *ngIf="error" class="has-margin-top-5 has-margin-bottom-25">
+          {{mensaje}}
+        </mat-error>
+
+        <!--      <img *ngIf="loading" src="assets/img/loading.gif" style="width:30px;" />-->
+      </div>
+
+      <div class="btn text-right text-black has-cursor-pointer px-0 login__content-forgotPassword underline is-full-width no-margin" routerLink="/sign/recover">* Olvidé mi contraseña</div>
+
+      <div class="text-center">
+        <button class="btn btn-success btn-block no-margin" *ngIf="!submitted" [disabled]="!loginForm.valid">{{!type ? 'INGRESAR' : 'Activar usuario'}}</button>
+        <button class="btn btn-success btn-block no-margin" *ngIf="submitted" [disabled]="!loginForm.valid"><i *ngIf="submitted" class="fa fa-spinner fa-spin text-white"></i></button>
+      </div>
+    </form>
+  </div>
+
+  <div class="text-center start__footer">
+    <img src="assets/images/funnel/bo-logo.png" alt="logos" style="width: 80%;margin-top: 20px;z-index: 9999990;position:relative;" />
+  </div>
+
+<!--  <div class="start__product pulse flex-row justify-space-between align-items-center" [ngClass]="!authorizationForm.get('Autorizacion').value ? 'disabled' : null" [routerLink]="!authorizationForm.get('Autorizacion').value ? '/' : '/funnel/loan-presentation'">-->
+<!--    <div class="text-left">-->
+<!--      <strong class="">Solicita tu crédito en línea, fácil, rápido y seguro.</strong>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      <mat-icon>east</mat-icon>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div class="start__auth is-relative zi-2 bg-white">-->
+<!--    <form [formGroup]="authorizationForm">-->
+<!--      <div>-->
+<!--        <mat-checkbox-->
+<!--          id="amateur"-->
+<!--          class="amateur"-->
+<!--          color="primary"-->
+<!--          formControlName="Autorizacion"> <span>Acepto los términos y condiciones</span> </mat-checkbox>-->
+<!--      </div>-->
+<!--    </form>-->
+<!--  </div>-->
+
+<!--  <nav class="bottom-nav">-->
+<!--    <a class="bottom-nav__destination" href="https://api.whatsapp.com/send?phone=573203290127&text=Quiero%20recibir%20ayuda" target="_blank" rel="noopener noopener">-->
+<!--      <mat-icon>attach_email</mat-icon>-->
+<!--      <span class="bottom-nav__label">Contáctanos</span>-->
+<!--    </a>-->
+
+<!--    <a class="bottom-nav__destination" href="#" routerLink="/products">-->
+<!--      <mat-icon>category</mat-icon>-->
+<!--      <span class="bottom-nav__label">Productos</span>-->
+<!--    </a>-->
+
+<!--    <a class="bottom-nav__destination" href="#" routerLink="/sign/signup">-->
+<!--      <mat-icon>how_to_reg</mat-icon>-->
+<!--      <span class="bottom-nav__label">Regístrate</span>-->
+<!--    </a>-->
+<!--  </nav>-->
+</div>
+

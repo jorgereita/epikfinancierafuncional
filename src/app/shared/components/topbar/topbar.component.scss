@@ -1,0 +1,40 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.app-header {
+  height: 10vh;
+  background-color: #FF7E00;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+
+  &__logo {
+    width: 33%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+
+    .logo-epik {
+      width: 70%;
+      max-width: 10rem;
+    }
+
+    .header-separator {
+      height: 30%;
+    }
+
+    .logo-bo {
+      width: 100%;
+      max-width: 12rem;
+      margin-right: 2rem;
+      margin-top: .5rem;
+    }
+  }
+}

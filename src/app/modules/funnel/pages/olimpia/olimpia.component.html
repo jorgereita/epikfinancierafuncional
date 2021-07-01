@@ -1,0 +1,23 @@
+<div class="loan-presentation">
+  <app-topbar
+    [hideMenuAtion]="true"
+    title="Validación de identidad"
+  ></app-topbar>
+
+  <div class="is-relative has-padding-20">
+    <app-intersitial *ngIf="loading"></app-intersitial>
+
+    <div [style.height]="'auto'" class="justify-center align-center flex-column">
+      <p class="text-center">Valida la información personal del cliente, a continuación</p>
+
+      <div class="text-center is-relative mt-2">
+        <iframe [src]="url" frameborder="0"></iframe>
+      </div>
+
+<!--      <div class="my-5">-->
+<!--        <button class="btn btn-success has-margin-auto" routerLink="/funnel/initial-query">Enrolar cliente</button>-->
+<!--      </div>-->
+    </div>
+  </div>
+</div>
+

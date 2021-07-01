@@ -1,0 +1,28 @@
+<div class="dni-validation">
+  <app-topbar
+    [hideMenuAtion]="true"
+    title="Autorizaciones"
+  ></app-topbar>
+
+  <div class="content is-relative">
+    <app-intersitial *ngIf="loading"></app-intersitial>
+
+    <h1 class="heading-1 mb-big">Identidad Válida</h1>
+
+    <img src="assets/images/funnel/valid-id.png" alt="valid-id" class="message-icon-wide mb-big">
+
+    <div class="sub-container mb-big">
+      <p class="notification-text mb-big">
+        La identidad<br>del cliente ha sido<br>confirmada
+      </p>
+
+      <div class="text-center">
+        <button *ngIf="!loading" class="btn btn-success has-margin-auto btn-block" type="submit" routerLink="/funnel/additional-data" [queryParams]="{side: 'placeholder'}">CONTINUAR</button>
+        <button *ngIf="loading" class="btn btn-success has-margin-auto btn-block" type="submit" disabled>GUARDANDO...</button>
+        <br />
+        <br />
+        <button class="btn btn-outline-success has-margin-top-20 mx-auto btn-block" routerLink="/funnel/finish-flow" [queryParams]="{message: 'El proceso ha sido finalizado por el usuario'}">CANCELAR</button>
+      </div>
+    </div>
+  </div>
+</div>

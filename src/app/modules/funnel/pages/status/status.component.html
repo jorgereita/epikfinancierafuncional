@@ -1,0 +1,42 @@
+<div class="validate-email">
+  <app-topbar [hideMenuAtion]="true" title="Estado del crédito"></app-topbar>
+
+  <div class="has-padding-20 text-center">
+    <app-intersitial *ngIf="loading"></app-intersitial>
+    <h1 class="heading-1 mb-medium">Resumen del credito </h1>
+    <!-- <img src="assets/images/funnel/succes.gif" width="100%" alt="success validation"> -->
+
+    <p>
+      <strong>Se aprobara a: <strong class="text-green text-capitalize">{{data?.Nombres}} </strong><br> El siguiente
+        crédito: </strong>
+    </p>
+    <ul >
+      <li>
+        <b> Valor :</b> {{data?.Valor | currency}}
+      </li>
+      <li>
+        <b> Cuota :</b> {{data?.Cuota | currency}}
+      </li>
+      <li>
+        <b> Plazo :</b> {{data?.Plazo}} Meses
+      </li>
+      <li>
+        <b> Telefono :</b> {{data?.Plazo}} Meses
+      </li>
+      <li>
+        <b> Email :</b> {{data?.Email}}
+      </li>
+
+    </ul>
+    <!-- <p>
+      Pulsa <strong>"Continuar"</strong> para ver los detalles del crédito y seleccionar el plazo.
+    </p> -->
+
+    <div class="has-margin-top-30">
+      <button class="btn btn-success" (click)="sendMatDoc()">Continuar</button>
+      <br>
+      <br>
+      <button class="btn btn-success" routerLink="/funnel/initial-query"  >Cancelar</button>
+    </div>
+  </div>
+</div>

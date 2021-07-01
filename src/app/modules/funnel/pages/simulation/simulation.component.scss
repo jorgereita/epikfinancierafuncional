@@ -1,0 +1,17 @@
+@import "../../../../../styles/modules/variables";
+
+.simulation {
+  &__simulate {
+    margin: 50px auto 20px;
+    padding: 10px;
+    box-sizing: border-box;
+    background: $color-dark-100;
+    color: $color-green-100;
+    width: 75%;
+    border-radius: 12px;
+  }
+}
+
+*{
+  font-size: 1.5rem;
+}

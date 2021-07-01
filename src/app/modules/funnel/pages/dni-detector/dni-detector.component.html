@@ -1,0 +1,78 @@
+<div class="dni-detector-match">
+  <app-topbar [hideMenuAtion]="true" title="Detección de rostro"></app-topbar>
+  <div class="dni-app-match is-relative" [style.height]="videoDimensions?.height + 'px'">
+    <app-intersitial *ngIf="loading"></app-intersitial>
+    <!-- <lib-dni-detector
+      (takePhoto)="takePhoto($event)"
+      format="horizontal"
+      selector=".dni-app-match"
+      [side]="side"
+      [disableModels]="true"
+      [placeholder]="'assets/images/funnel/id-picture-overlay.png'"
+      [hideMessage]="true"
+      [exportSize]="[videoDimensions.width + 20, 280]"
+    ></lib-dni-detector> -->
+    <div *ngIf="!loading" class="flex">
+     
+      <div *ngIf="side === 'placeholder'">
+        <img [src]="imageBack" class="backImg" alt="">
+        <app-camera (pictureTaken)="handleImage2($event)"></app-camera>
+        <!-- <ng-container *ngIf="screenOn2 && webcamImage2 == null">
+          <app-camera (pictureTaken)="handleImage2($event)"></app-camera>
+        </ng-container>
+        <ng-container *ngIf="!screenOn2 || webcamImage2 !== null">
+          <img [src]="webcamImage2 !== null ? webcamImage2 : imageSrc2" class="circle" />
+        </ng-container>
+        <br />
+        <div>
+          (ajuste Foto Reverso Cedula dentro del cuadro)
+        </div>
+        <button *ngIf="!screenOn2 || webcamImage2" type="button" mat-button style="background: #1c60a7; color: white"
+          (click)="toggleCamera2()">
+          Tomar Foto <i class="material-icons">add_a_photo</i>
+        </button>
+        <button *ngIf="screenOn2 && !webcamImage2" type="button" mat-button style="background: #262c5e; color: white"
+          (click)="cancelarCamera2()">
+          Cancelar <i class="material-icons">close</i>
+        </button>
+        <button (click)="takePhoto(webcamImage2)" [ngStyle]="{  background: '#0168b3' }" id="btnSendReport"
+          mat-raised-button style="color: white; width: 90%">
+          Enviar foto
+        </button> -->
+      </div>
+      <div *ngIf="side === 'placeholder-inverse'">
+        <img [src]="imageBack" class="backImg" alt="">
+        <app-camera (pictureTaken)="handleImage3($event)"></app-camera>
+        <!-- <p>Foto Adverso Cedula</p>
+        <ng-container *ngIf="screenOn3 && webcamImage3 == null">
+          <app-camera (pictureTaken)="handleImage3($event)"></app-camera>
+        </ng-container>
+        <ng-container *ngIf="!screenOn3 || webcamImage3 !== null">
+          <img [src]="webcamImage3 !== null ? webcamImage3 : imageSrc3" class="circle" />
+        </ng-container>
+        <br />
+        <div>
+        </div>
+        <button *ngIf="!screenOn3 || webcamImage3" type="button" mat-button style="background: #1c60a7; color: white"
+          (click)="toggleCamera3()">
+          Tomar Foto <i class="material-icons">add_a_photo</i>
+        </button>
+
+        <button *ngIf="screenOn3 && !webcamImage3" type="button" mat-button style="background: #262c5e; color: white"
+          (click)="cancelarCamera3()">
+          Cancelar <i class="material-icons">close</i>
+        </button>
+        <button (click)="takePhoto(webcamImage3)" [ngStyle]="{  background: '#0168b3' }" id="btnSendReport"
+          mat-raised-button style="color: white; width: 90%">
+          Enviar foto
+        </button> -->
+      </div>
+    </div>
+    <div class="info">
+      <p class="notification-text color-white" *ngIf="side === 'placeholder'">Ubique el frente del <br> documento dentro
+        del recuadro</p>
+      <p class="notification-text color-white" *ngIf="side === 'placeholder-inverse'">Ubique la parte posterior de <br>
+        documento dentro del recuadro</p>
+    </div>
+  </div>
+</div>
