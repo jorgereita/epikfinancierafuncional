@@ -37,12 +37,10 @@ export class StatusComponent implements OnInit {
       if (response.IdError === 0) {
         this.loading = false;
         if (response.IdEstado == 8) {
-         
           await this.router.navigateByUrl('/funnel/documents');
         } else {
           this.openSnackBar(response.Mensaje, 'Cerrar');
         }
-
       } else {
         this.openSnackBar(response.Mensaje, 'Cerrar');
         this.loading = false;

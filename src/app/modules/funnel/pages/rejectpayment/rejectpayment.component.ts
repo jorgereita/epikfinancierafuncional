@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {Router} from '@angular/router';
-import {DataService} from '../../../../services/data.service';
+import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
-  selector: 'app-occupation',
-  templateUrl: './occupation.component.html',
-  styleUrls: ['./occupation.component.scss']
+  selector: 'app-rejectpayment',
+  templateUrl: './rejectpayment.component.html',
+  styleUrls: ['./rejectpayment.component.scss']
 })
-export class OccupationComponent implements OnInit {
+export class RejectpaymentComponent implements OnInit {
+
   resending: boolean;
   times = 0;
   hideConfirmSender: boolean;
@@ -41,11 +41,11 @@ export class OccupationComponent implements OnInit {
       "NumeroAutorizacion": this.data.NumeroAutorizacion,
     }
 
-    this.dataService.validarDocs(formData).subscribe(async (response: any) => {
+    this.dataService.enviarDocs(formData).subscribe(async (response: any) => {
       if (response.IdError === 0) {
         this.loading = false;
-        if (response.IdEstado == 11) {
-          await this.router.navigateByUrl('/funnel/verify-payment');
+        if (response.IdEstado == 9) {
+          await this.router.navigateByUrl('/funnel/validate-docs');
         } else {
           this.openSnackBar(response.Mensaje, 'Cerrar');
         }

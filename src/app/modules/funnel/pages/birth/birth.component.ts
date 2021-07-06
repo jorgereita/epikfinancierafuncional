@@ -10,22 +10,22 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   styleUrls: ['./birth.component.scss']
 })
 export class BirthComponent implements OnInit {
+  resending: boolean;
+  times = 0;
+  hideConfirmSender: boolean;
+  data: any;
+  showSender = false;
   loading = false;
-  dataForm: FormGroup;
-
   constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
     private dataService: DataService,
     private snackBar: MatSnackBar,
+    private router: Router,
   ) {
-    this.dataForm = this.formBuilder.group({
-      Ciudad: ['', [Validators.required]],
-      FechaNacimiento: ['', [Validators.required]],
-    });
+    this.data = JSON.parse(localStorage.getItem('userData'));
   }
 
   ngOnInit(): void {
+    setTimeout(() => this.showSender = true, 3000);
   }
 
   openSnackBar(message: string, action: string): void {
@@ -34,27 +34,29 @@ export class BirthComponent implements OnInit {
     });
   }
 
-  async sendData(): Promise<void> {
+  sendVerificar(): void {
     this.loading = true;
-    // Do stuff here
-    const formData = this.dataForm.value;
+    let formData = {
+      "NumeroIdentificacion": this.data.NumeroIdentificacion ? this.data.NumeroIdentificacion : localStorage.getItem('NumeroDocumento'),
+      "NumeroAutorizacion": this.data.NumeroAutorizacion,
+    }
 
-    console.log(formData);
-
-    setTimeout(() => this.loading = false, 1500);
-
-    await this.router.navigateByUrl('/funnel/occupation');
-
-    // this.dataService.newUser(formData).subscribe(async (response: any) => {
-    //   if (response.IdError === 0) {
-    //     localStorage.setItem('userDataTemp', JSON.stringify(formData));
-    //     await this.router.navigateByUrl('/funnel/biometric');
-    //     this.loading = false;
-    //   } else {
-    //     this.openSnackBar(response.Mensaje, 'Cerrar');
-    //     this.loading = false;
-    //   }
-    // });
+    this.dataService.verifyPagare(formData).subscribe(async (response: any) => {
+      if (response.IdError === 0) {
+        this.loading = false;
+        if (response.IdEstado == 12) {
+          await this.router.navigateByUrl('/funnel/success');
+          // this.router.navigateByUrl(`/funnel/success/${true}`);
+        } else {
+          this.openSnackBar(response.Mensaje, 'Cerrar');
+          await this.router.navigateByUrl('/funnel/reject-payment');
+        }
+      } else {
+        this.openSnackBar(response.Mensaje, 'Cerrar');
+        this.loading = false;
+      }
+    });
   }
+
 
 }

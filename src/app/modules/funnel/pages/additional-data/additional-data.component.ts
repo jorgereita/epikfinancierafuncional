@@ -79,7 +79,6 @@ export class AdditionalDataComponent implements OnInit {
         localStorage.setItem('IdConsulta', response.IdConsulta);
         localStorage.setItem('NumeroDocumento', response.NumeroIdentificacion);
         localStorage.setItem('userData', JSON.stringify(response));
-
         this.loading = false;
         // set IdConsulta
         const url = screens[response.IdPantalla];

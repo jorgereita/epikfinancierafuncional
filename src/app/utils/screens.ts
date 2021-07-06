@@ -9,4 +9,5 @@ export const screens = {
   8: '/funnel/form',
   9: '/funnel/authorization',
   99: '/funnel/finish-flow',
+  98: '/funnel/reject',
 };

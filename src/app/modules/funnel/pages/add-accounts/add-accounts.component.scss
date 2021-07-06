@@ -15,7 +15,7 @@
     &.selected {
       background: $color-dark;
 
-      div {
+      * {
         color: white;
       }
     }

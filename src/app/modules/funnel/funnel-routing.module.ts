@@ -43,6 +43,7 @@ import {FingerprintDetectorComponent} from './pages/fingerprint-detector/fingerp
 import {FeceDetectorPresentationComponent} from './pages/fece-detector-presentation/fece-detector-presentation.component';
 import {DniDetectorPresentationComponent} from './pages/dni-detector-presentation/dni-detector-presentation.component';
 import {DniValidationSuccessfullComponent} from './pages/dni-validation-successfull/dni-validation-successfull.component';
+import { RejectpaymentComponent } from './pages/rejectpayment/rejectpayment.component';
 
 const routes: Routes = [
   {
@@ -66,7 +67,7 @@ const routes: Routes = [
     component: LoanFormComponent,
   },
   {
-    path: 'olimpia',
+    path: 'reject',
     component: OlimpiaComponent,
   },
   {
@@ -90,11 +91,11 @@ const routes: Routes = [
     component: BankNoteComponent,
   },
   {
-    path: 'birthdate',
+    path: 'verify-payment',
     component: BirthComponent,
   },
   {
-    path: 'occupation',
+    path: 'validate-docs',
     component: OccupationComponent,
   },
   {
@@ -210,12 +211,16 @@ const routes: Routes = [
     component: NewBankAccountComponent,
   },
   {
-    path: 'dni-match',
+    path: 'success',
     component: DniComponent,
   },
   {
     path: 'finish-flow',
     component: FinishFlowComponent,
+  },
+  {
+    path: 'reject-payment',
+    component: RejectpaymentComponent,
   },
 ];
 

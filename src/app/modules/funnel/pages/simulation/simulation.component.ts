@@ -64,7 +64,7 @@ export class SimulationComponent implements OnInit {
     this.data = JSON.parse(localStorage.getItem('userData'));
     this.payout = this.route.snapshot.queryParams.payout || null;
     this.income = this.route.snapshot.queryParams.income || null;
-    this.availableAmount = this.data.Cupo || availableAmount;
+    this.availableAmount = parseInt(this.data.Cupo) || availableAmount;
 
     this.calcform = this.formBuilder.group({
       Cuotas: ['', [Validators.required,]],
@@ -96,7 +96,7 @@ export class SimulationComponent implements OnInit {
       if (response.IdError === 0) {
         this.showDetails = true;
         localStorage.setItem('userData', JSON.stringify(response));
-        this.ciclosFac = response.CiclosFacturacion;
+        this.ciclosFac = response.CiclosFacturacion.reverse();
         this.RespuestaSimulaciones = response.RespuestaSimulaciones;
         this.loading = false;
       } else {

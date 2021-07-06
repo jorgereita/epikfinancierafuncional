@@ -21,5 +21,8 @@
     align-items: center;
     justify-content: center;   
     position: absolute;
-    z-index: 1001;
+    z-index: 10000;
+    position: fixed;
+    top: 90%;
+    font-size: 2rem;
   }

@@ -1,15 +1,14 @@
-<div class="dni-match" [style.height]="videoDimensions?.height + 'px'">
-  <app-dni-player
-    [stream]="currentStream"
-    [width]="videoDimensions?.width"
-    [height]="videoDimensions?.height"
-  ></app-dni-player>
-</div>
-
-<div style="margin: 50px auto;">
-  <h4 class="text-center">Ubica la cédula sobre una superficie plana, para mejorar el resultado.</h4>
-
-  <p class="text-center">
-    Mantén firme el documento sobre la superfice, tomarémos la foto de forma automática
-  </p>
+<div class="finish-flow">
+  <app-topbar title="Datos adicionales"></app-topbar>
+  <div class="content is-relative">
+    <h1 class="heading-1 mb-big">¡Crédito otorgado!</h1>
+    <img src="assets/images/funnel/credit-approved.png" alt="" class="message-icon-wide mb-big">
+    <p class="notification-text mb-big text-black">
+      <b>El cliente a firmado el pagaré y los documentos de crédito y éste ha sido otorgado </b>
+    </p>
+    <div class="text-center">
+      <button class="btn btn-success has-margin-top-20 mx-auto btn-block" routerLink="/funnel/initial-query"
+        [queryParams]="{message: 'El proceso ha sido finalizado por el usuario'}">TERMINAR PROCESO</button>
+    </div>
+  </div>
 </div>

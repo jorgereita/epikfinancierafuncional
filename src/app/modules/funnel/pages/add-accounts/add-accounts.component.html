@@ -36,20 +36,20 @@
            <div>Cuenta Corriente</div>
          </div>
        </div>
-        <div class="card card-option has-margin-top-10 has-margin-bottom-10 has-padding-10 flex-row align-items-center" [ngClass]="selected == 'other' ? 'selected' : null" routerLink="/funnel/new-bank-account">
+        <!-- <div class="card card-option has-margin-top-10 has-margin-bottom-10 has-padding-10 flex-row align-items-center" [ngClass]="selected == 'other' ? 'selected' : null" routerLink="/funnel/new-bank-account">
           <mat-icon>dashboard_customize</mat-icon>
           <div class="flex-column has-margin-left-20">
             <strong>Añadir cuenta</strong>
             <div>Añade una nueva cuenta</div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
 
     <div class="text-center has-margin-top-30">
-      <button class="btn btn-success" (click)="sendData()" [disabled]="!addAccountForm.valid || !selected">Continuar</button>
+      <button class="btn btn-success" (click)="sendData()" [disabled]="!addAccountForm.valid || !selected">CONTINUAR</button>
       <br /><br />
-      <button class="btn btn-outline-success" (click)="skip()">Saltar este paso</button>
+      <button class="btn btn-outline-success" (click)="skip()">SALTAR ESTE PASO</button>
     </div>
   </div>
 </div>

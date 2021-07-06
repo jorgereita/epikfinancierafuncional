@@ -1,41 +1,28 @@
-<div class="occupation">
+<div class="email-confirm">
   <app-topbar
-    title="Información adicional"
+    [hideMenuAtion]="true"
+    title="confirmar email"
   ></app-topbar>
 
-  <div class="has-padding-20 is-relative">
+  <div class="has-padding-20 text-center">
     <app-intersitial *ngIf="loading"></app-intersitial>
-    <h4>¿Cuál es tu ocupación?</h4>
+    <h1 class="heading-1 mb-medium">Documentos enviados</h1>
+    <br>
+    <img src="assets/images/funnel/phone.png" alt="send email">
+
     <p>
-      Solicitud disponible solo para personas en Colombia
+      Hemos enviado un mensaje al whatsapp del cliente.
+    </p>
+
+    <p>
+      <small>  <strong class="text-green-100">Puedes verificar si ya fue confirmado</strong></small>
     </p>
 
     <div class="has-margin-top-30">
-      <div class="card card-option has-margin-top-10 has-margin-bottom-10 has-padding-10 flex-row align-items-center" [ngClass]="selected == 'asalariado' ? 'selected' : null" (click)="selected = 'asalariado'">
-        <mat-icon>work_outline</mat-icon>
-        <div class="flex-column has-margin-left-20">
-          <strong>Asalariado</strong>
-          <div>Con contrato laboral</div>
-        </div>
-      </div>
-      <div class="card card-option has-margin-top-10 has-margin-bottom-10 has-padding-10 flex-row align-items-center" [ngClass]="selected == 'independiente' ? 'selected' : null" (click)="selected = 'independiente'">
-        <mat-icon>person_outline</mat-icon>
-        <div class="flex-column has-margin-left-20">
-          <strong>Independiente</strong>
-          <div>Actividad sin contrato</div>
-        </div>
-      </div>
-      <div class="card card-option has-margin-top-10 has-margin-bottom-10 has-padding-10 flex-row align-items-center" [ngClass]="selected == 'pensionado' ? 'selected' : null" (click)="selected = 'pensionado'">
-        <mat-icon>accessibility_new</mat-icon>
-        <div class="flex-column has-margin-left-20">
-          <strong>Pensionado</strong>
-          <div>Jubilado de la actividad</div>
-        </div>
-      </div>
+      <button class="btn btn-success"  (click)="sendVerificar()">VERIFICAR</button>
+      <br><br>
+      <button class="btn btn-success"  routerLink="/funnel/initial-query">CANCELAR</button>
     </div>
 
-    <div class="text-center has-margin-top-40">
-      <button class="btn btn-success" (click)="sendData()">Continuar</button>
-    </div>
   </div>
 </div>

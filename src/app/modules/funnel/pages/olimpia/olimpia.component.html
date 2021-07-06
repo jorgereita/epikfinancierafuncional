@@ -1,23 +1,15 @@
-<div class="loan-presentation">
-  <app-topbar
-    [hideMenuAtion]="true"
-    title="Validación de identidad"
-  ></app-topbar>
-
-  <div class="is-relative has-padding-20">
-    <app-intersitial *ngIf="loading"></app-intersitial>
-
-    <div [style.height]="'auto'" class="justify-center align-center flex-column">
-      <p class="text-center">Valida la información personal del cliente, a continuación</p>
-
-      <div class="text-center is-relative mt-2">
-        <iframe [src]="url" frameborder="0"></iframe>
-      </div>
-
-<!--      <div class="my-5">-->
-<!--        <button class="btn btn-success has-margin-auto" routerLink="/funnel/initial-query">Enrolar cliente</button>-->
-<!--      </div>-->
+<div class="finish-flow">
+  <app-topbar title="Datos adicionales"></app-topbar>
+  <div class="content is-relative">
+    <h1 class="heading-1 mb-big">Usuario no validado</h1>
+    <img src="assets/images/funnel/rejected-id.png" alt="" class="message-icon-wide mb-big">
+    <p class="notification-text mb-big text-black">
+      <b>El cliente no ha superado la validaciòn</b>
+    </p>
+    <div class="text-center">
+      <!-- <button class="btn btn-success has-margin-top-20 mx-auto btn-block"  (click)="sendVerificar()">REINTENTAR FIRMA</button> <br><br> -->
+      <button class="btn btn-success has-margin-top-20 mx-auto btn-block" routerLink="/funnel/initial-query"
+         >TERMINAR PROCESO</button>
     </div>
   </div>
 </div>
-

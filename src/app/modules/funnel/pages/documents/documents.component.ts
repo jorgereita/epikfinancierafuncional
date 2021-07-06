@@ -37,14 +37,11 @@ export class DocumentsComponent implements OnInit {
     this.dataService.enviarDocs(formData).subscribe(async (response: any) => {
       if (response.IdError === 0) {
         this.loading = false;
-        await this.router.navigateByUrl('/funnel/finish');
-        // if (response.IdEstado == 8) {
-         
-         
-        // } else {
-        //   this.openSnackBar(response.Mensaje, 'Cerrar');
-        // }
-
+        if (response.IdEstado == 9) {
+          await this.router.navigateByUrl('/funnel/validate-docs');
+        } else {
+          this.openSnackBar(response.Mensaje, 'Cerrar');
+        }
       } else {
         this.openSnackBar(response.Mensaje, 'Cerrar');
         this.loading = false;

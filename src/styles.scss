@@ -51,7 +51,9 @@ body {
   background: linear-gradient(0deg, rgba(160,159,148,1) 10%, rgba(230,230,230,1) 100%);
   background-attachment: fixed;
 }
-
+*{
+  font-size: 1.9rem;
+  }
 /* if portrait mode is detected, rotate the entire site -90 degrees to hint rotating to landscape */
 //@media (orientation: landscape) {
 //  body {

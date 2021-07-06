@@ -118,4 +118,10 @@ export class DataService {
   enviarDocs(data){
     return this.httpClient.post<any>(this.externalBaseUrl + 'api/com/enviar-documentos', data);
   }
+  validarDocs(data){
+    return this.httpClient.post<any>(this.externalBaseUrl + 'api/com/validar-documentos', data);
+  }
+  verifyPagare(data){
+    return this.httpClient.post<any>(this.externalBaseUrl + 'api/com/validar-firma-documentos', data);
+  }
 }

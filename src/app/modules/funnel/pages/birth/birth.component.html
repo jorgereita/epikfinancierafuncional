@@ -1,37 +1,24 @@
-<div class="birthdate">
+<div class="email-confirm">
   <app-topbar
-    title="Información adicional"
+    [hideMenuAtion]="true"
+    title="confirmar email"
   ></app-topbar>
 
-  <div class="has-padding-20 is-relative">
+  <div class="has-padding-20 text-center">
     <app-intersitial *ngIf="loading"></app-intersitial>
-    <h4>Lugar y fecha de nacimiento</h4>
+    <h1 class="heading-1 mb-medium">Firma de Pagaré</h1>
+    <br>
+    <img src="assets/images/funnel/phone.png" alt="send email">
     <p>
-      Solicitud disponible solo para personas en Colombia
+      Hemos enviado un mensaje al whatsapp del cliente.
     </p>
-
-    <div [style.height]="'auto'">
-      <form [formGroup]="dataForm" (submit)="sendData()" class="has-margin-top-30">
-        <div>
-          <mat-form-field class="is-full-width">
-            <mat-label>Ciudad*</mat-label>
-            <input matInput autocomplete="off" maxlength="20"
-                   formControlName="Ciudad" placeholder="Bogotá" type="text" value="" mask="S*">
-          </mat-form-field>
-        </div>
-
-        <div>
-          <mat-form-field class="is-full-width">
-            <mat-label>Fecha de nacimiento*</mat-label>
-            <input matInput autocomplete="off" maxlength="10"
-                   formControlName="FechaNacimiento" placeholder="DD/MM/AAAA" type="text" value="" mask="00/00/0000">
-          </mat-form-field>
-        </div>
-
-        <div class="has-margin-top-20 text-center">
-          <button class="btn btn-success has-margin-auto" type="submit" [disabled]="!dataForm.valid">Continuar</button>
-        </div>
-      </form>
+    <p>
+      <small>  <strong class="text-green-100">Puedes verificar si ya fue confirmado</strong></small>
+    </p>
+    <div class="has-margin-top-30">
+      <button class="btn btn-success"  (click)="sendVerificar()">VERIFICAR</button>
+      <br><br>
+      <button class="btn btn-success"  routerLink="/funnel/initial-query">CANCELAR</button>
     </div>
   </div>
 </div>

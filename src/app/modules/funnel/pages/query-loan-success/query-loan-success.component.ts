@@ -50,8 +50,14 @@ export class QueryLoanSuccessComponent implements OnInit {
 
         this.loading = false;
         // set IdConsulta
-        const url = screens[response.IdPantalla];
-        await this.router.navigateByUrl(url);
+        if(response.PermiteCotizar){
+          await this.router.navigateByUrl('simulation');
+          // await this.router.navigateByUrl('finish-flow');
+          
+        }else{
+          const url = screens[response.IdPantalla];
+          await this.router.navigateByUrl(url);
+        }
       } else {
         this.openSnackBar(response.Mensaje, 'Cerrar');
         this.loading = false;

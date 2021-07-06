@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 export class OlimpiaComponent implements OnInit {
   loading: any;
   url: SafeResourceUrl;
-
+  data
   constructor(
     public sanitizer: DomSanitizer,
     private router: Router,
@@ -20,9 +20,10 @@ export class OlimpiaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    setTimeout(async () => {
-      await this.router.navigateByUrl('/funnel/biometric-success');
-    }, environment.timeToWaitIframes * 1000);
+    this.data = JSON.parse(localStorage.getItem('userData'));
+    // setTimeout(async () => {
+    //   await this.router.navigateByUrl('/funnel/biometric-success');
+    // }, environment.timeToWaitIframes * 1000);
   }
 
 }
