@@ -34,24 +34,12 @@ export class FaceDetectorComponent implements OnInit {
     // console.log('initialize');
     this.toggleCamera1();
   }
-  sendFacePhoto() {debugger
+  cancelCamera(){
+    this.router.navigateByUrl("/funnel/face-detector-presentation");
+  }
+  sendFacePhoto() {
     console.log(this.webcamImage1)
-    // let data = {
-
-    //   "IdConsulta": this.responseForm1.IdConsulta,
-    //   "FotoPerfil": this.webcamImage1
-    // }
-
-    // this.waitSend = true;
-    // this.dataService.setProfilePhoto(data).subscribe(response => {
-
-    //   this.waitSend = false;
-    //   if (response.IdError == 0) {
-    //     // this.responseForm1 = response;
-    //     this.demo1TabIndex = this.demo1TabIndex + 1;
-    //   }
-    //   this.openSnackBar(response.Mensaje, 'Cerrar');
-    // });
+ 
   }
   openSnackBar(message: string, action: string): void {
     this.snackBar.open(message, action, {

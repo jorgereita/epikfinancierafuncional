@@ -4,7 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DataService } from 'src/app/services/data.service';
 import { availableAmount, getQuote } from 'src/app/utils/utils';
-
+import { registerLocaleData } from '@angular/common';
+import es from '@angular/common/locales/es';
+import * as _ from 'lodash';
 @Component({
   selector: 'app-simulation',
   templateUrl: './simulation.component.html',
@@ -76,6 +78,7 @@ export class SimulationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    registerLocaleData( es );
   }
 
   openSnackBar(message: string, action: string): void {
@@ -96,7 +99,7 @@ export class SimulationComponent implements OnInit {
       if (response.IdError === 0) {
         this.showDetails = true;
         localStorage.setItem('userData', JSON.stringify(response));
-        this.ciclosFac = response.CiclosFacturacion.reverse();
+        this.ciclosFac =_.orderBy(response.CiclosFacturacion, ['IdCicloFacturacion'], ['desc']);
         this.RespuestaSimulaciones = response.RespuestaSimulaciones;
         this.loading = false;
       } else {

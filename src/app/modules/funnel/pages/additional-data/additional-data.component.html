@@ -32,7 +32,15 @@
             </mat-select>
           </mat-form-field>
         </div>
-
+        <div>
+          <label class="text-left label-small">Actividad Economica</label>
+          <mat-form-field style="width: 100%;">
+            <!--            <input matInput minlenght="7" formControlName="Ocupacion" placeholder="Jefe de sistemas" mask="S*" maxlength="100" autocomplete="off">-->
+            <mat-select formControlName="CodigoCIIU">
+              <mat-option *ngFor="let option of ciiuCodeList" [value]="option.Id">{{option.Descripcion}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
         <div>
           <label class="text-left label-small">Antigüedad laboral*</label>
           <mat-form-field style="width: 100%;">

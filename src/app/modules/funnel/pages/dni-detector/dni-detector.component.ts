@@ -80,6 +80,12 @@ export class DniDetectorComponent implements OnInit {
     this.webcamImage3 = null;
     this.screenOn3 = false;
   }
+  cancelCamera1() {
+    this.router.navigateByUrl("/funnel/dni-detector-presentation");
+  }  
+  cancelCamera2() {
+    this.router.navigateByUrl("/funnel/dni-detector?side=placeholder");
+  }
   checkMediaSources = (): void => {
     if (navigator && navigator.mediaDevices) {
       navigator.mediaDevices.getUserMedia({

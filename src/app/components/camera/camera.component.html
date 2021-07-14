@@ -6,11 +6,13 @@
       <br/>
 
       
-      <button  class="btn btn-success btn-block no-margin button-camera" (click)="triggerSnapshot();"   >Capturar
+      <button  class="btn btn-success btn-block no-margin button-camera" (click)="triggerSnapshot();"   >CAPTURAR
           <i class="material-icons">
               camera
           </i>
         </button>
+        <br>
+        <button  class="btn btn-success btn-block no-margin button-camera-cancel" (click)="emitCancel();"   >CANCELAR </button>
       <!-- <div class="actionBtn"  title="Tomar Foto">📸</div>
       <div class="actionBtn" (click)="showNextWebcam(true);" title="Cambiar Camara">🔁</div> -->
     </div>

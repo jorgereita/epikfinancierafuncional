@@ -71,3 +71,14 @@
     border-color: #C2C9D3;
   }
 }
+
+.info-msg {
+  display: flex;
+  align-items: center;
+  justify-content: center;   
+  z-index: 10000;
+  position: fixed;
+  top: 57vh;
+  color: white;
+  font-size: 1.5rem;
+}

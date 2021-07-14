@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
-  baseUrl: 'https://desarrollo.epik.com.co:5001/', // API url for Financiera
-  externalBaseUrl: 'https://desarrollo.epik.com.co:5001/', // API url for external services
+  baseUrl: 'https://financiera.epik.com.co:5001/', // API url for Financiera
+  externalBaseUrl: 'https://financiera.epik.com.co:5001/', // API url for external services
   firebaseConfig: {
     apiKey: 'AIzaSyDOoCEREIqN7XFvXWFcs3L3Cvzmysm3M04',
     authDomain: 'financiera-epik.firebaseapp.com',

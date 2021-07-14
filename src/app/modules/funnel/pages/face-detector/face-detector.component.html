@@ -16,7 +16,7 @@
       <img [src]="imageBack" class="backImg" alt="">
       <div class="center">
         <p class="title-cam">Ubique el rostro dentro del óvalo.</p>
-        <app-camera (pictureTaken)="handleImage1($event)"></app-camera>
+        <app-camera (pictureTaken)="handleImage1($event)" (cancelEvent)="cancelCamera()"></app-camera>
         <!-- <ng-container *ngIf="screenOn1 && webcamImage1 == null">
           <app-camera (pictureTaken)="handleImage1($event)"></app-camera>
         </ng-container>

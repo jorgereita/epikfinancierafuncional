@@ -26,10 +26,10 @@
           <mat-form-field class="is-full-width">
             <input matInput formControlName="Usuario">
             <mat-error *ngIf="f.Usuario.hasError('email') && !f.email.hasError('required')">
-              El correo no es válido
+              El usuario no es válido
             </mat-error>
             <mat-error *ngIf="f.Usuario.hasError('required')">
-              El correo es requerido
+              El usuario es requerido
             </mat-error>
           </mat-form-field>
         </div>

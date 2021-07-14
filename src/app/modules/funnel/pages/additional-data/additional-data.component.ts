@@ -31,7 +31,7 @@ export class AdditionalDataComponent implements OnInit {
     this.loadData();
     this.additionalDataForm = this.formBuilder.group({
       IngresoMensual: ['', Validators.required],
-      // CodigoCIIU: ['', Validators.required],
+      CodigoCIIU: ['', Validators.required],
       IdActividadEconomica: ['', Validators.required],
       IdAntiguedadLaboral: ['', Validators.required],
       Pep: ['', Validators.required],
@@ -51,6 +51,9 @@ export class AdditionalDataComponent implements OnInit {
           }
           if (data.Lista[e].TipoCatalogo === "Antiguedad Laboral") {
             this.laborarlAntiquityList = data.Lista[e].Catalago;
+          }
+          if (data.Lista[e].TipoCatalogo === "Actividades CIIU") {
+            this.ciiuCodeList = data.Lista[e].Catalago;
           }
         }
       }

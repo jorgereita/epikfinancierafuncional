@@ -23,6 +23,16 @@
     position: absolute;
     z-index: 10000;
     position: fixed;
+    top: 80%;
+    font-size: 2rem;
+  }
+  .button-camera-cancel {
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    position: absolute;
+    z-index: 10000;
+    position: fixed;
     top: 90%;
     font-size: 2rem;
   }

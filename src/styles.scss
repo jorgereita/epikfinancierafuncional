@@ -80,7 +80,12 @@ body {
     }
   }
 }
-
+form {
+  button {
+    width: 100% !important;
+    height: 50px;
+  }
+}
 .content {
   flex: 1;
   display: flex;

@@ -11,7 +11,7 @@ import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
 export class CameraComponent implements OnInit {
   @Output()
   public pictureTaken = new EventEmitter<WebcamImage>();
-
+  @Output() cancelEvent = new EventEmitter<boolean>();
   // toggle webcam on/off
   public showWebcam = true;
   public allowCameraSwitch = true;
@@ -72,5 +72,8 @@ export class CameraComponent implements OnInit {
 
   public get nextWebcamObservable(): Observable<boolean | string> {
     return this.nextWebcam.asObservable();
+  }
+  public emitCancel(){
+    this.cancelEvent.emit(true);
   }
 }

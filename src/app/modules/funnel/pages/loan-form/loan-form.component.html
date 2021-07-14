@@ -44,15 +44,9 @@
             </mat-form-field>
           </div>
 
-<!--          <div>-->
-<!--            <mat-form-field class="is-full-width">-->
-<!--              <mat-label>Dirección*</mat-label>-->
-<!--              <input matInput autocomplete="off" maxlength="40"-->
-<!--                     formControlName="Direccion" placeholder="e.g. Cra 57 # 5a - 09" type="text" value="">-->
-<!--            </mat-form-field>-->
-<!--          </div>-->
+ 
 
-          <div class="has-margin-top-20 has-padding-20 text-center">
+          <div class="text-center">
             <button *ngIf="!loading" class="btn btn-success has-margin-auto" type="submit" [disabled]="!personalInfoForm.valid">CONTINUAR</button>
             <br><br>
             <button  class="btn btn-success has-margin-auto"  routerLink="/funnel/initial-query"> CANCELAR</button>
