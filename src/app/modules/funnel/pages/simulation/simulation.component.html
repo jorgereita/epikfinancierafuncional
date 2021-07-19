@@ -7,35 +7,37 @@
     <div class="text-center has-margin-bottom-30">
       <h1 class="heading-1 mb-medium">¡Todo listo para comprar!</h1>
       <h5><b> {{data?.Nombre || 'Nombre'}} </b> </h5>
-      <p class="text-center m-0">Recuerda que puedes utilizar un total de</p>
-      <h2 class="no-margin text-green-100 my-1">{{data?.MontoAprobado || availableAmount 
+      <p class="text-center m-0">Recuerda que el cliente puede utilizar un total de</p>
+      <h2 class="no-margin text-green-100 my-1">{{data?.MontoAprobado 
         | number:'':'es' }}</h2>
     </div>
 
     <div class="has-margin-top-20">
       <form [formGroup]="amountForm">
-        <p>Selecciona a continuación el monto que deseas utilizar para tu compra.</p>
+        <p>A continuación ingresa el monto que el cliente desea utilizar.</p>
 
         <div class="mt-5">
-          <mat-label>Monto a solicitar (<strong>máx. {{data?.MontoAprobado || availableAmount 
-            | number:'':'es'}}</strong>)</mat-label>
+          <mat-label>Monto a solicitar (<strong>máx. {{data?.MontoAprobado  
+              | number:'':'es'}}</strong>)</mat-label>
           <mat-form-field class="is-full-width">
             <mat-label></mat-label>
             <input matInput minlenght="7" formControlName="Monto" placeholder="123,123" mask="separator.2"
               thousandSeparator="." maxlength="13" autocomplete="off">
           </mat-form-field>
         </div>
-        <button class="btn btn-success has-margin-auto my-2" (click)="calcCouta()" [disabled]="!amountForm.valid">CALCULAR
+        <button class="btn btn-success has-margin-auto my-2" (click)="calcCouta()"
+          [disabled]="!amountForm.valid">CALCULAR
           CUOTAS </button>
       </form>
     </div>
 
     <div class="text-center">
-      
+
       <br />
       <br />
-      <form [formGroup]="calcform"  >
-        <p>Selecciona las cuotas.</p>
+      <form [formGroup]="calcform" *ngIf="showDetails">
+        <p>Seleccionar las cuotas que el cliente escoja, el cliente podrá pagar anticipadamente cubriendo los costos incurridos hasta ese momento.</p> 
+        <b *ngIf="calcform.value.Cuotas">*La cuota incluye capital, intereses, seguro de vida y fianza subsidiaria.</b>
         <div>
           <mat-form-field style="width: 100%;">
             <mat-select formControlName="Cuotas">
@@ -43,9 +45,9 @@
                 {{option.SimuladortTexto}}</mat-option>
             </mat-select>
           </mat-form-field>
-          *Recuerde que este será su día de pago de cada mes. 
         </div>
-        <p>Seleccionar fecha de recaudo.</p>
+        <p>Seleccionar la primera fecha de pago que el cliente escoja.</p>
+        <b *ngIf="calcform.value.Tiempo">*Recuerde que el {{getDay()}} será el día de pago de cada mes.</b>
         <div>
           <mat-form-field style="width: 100%;">
             <mat-select formControlName="Tiempo">
@@ -53,16 +55,13 @@
                 {{option.FechaFacturacion}}</mat-option>
             </mat-select>
           </mat-form-field>
-          <p>*La cuenta incluye, capital intereses y seguro total.</p>
         </div>
         <button class="btn btn-success has-margin-auto my-2" (click)="sendCouta()"
           [disabled]="!calcform.valid">CONFIRMAR CUOTAS</button>
-          <br>    <br>
-          <button class="btn btn-outline-success has-margin-auto my-2" routerLink="/funnel/initial-query"
+        <br> <br>
+        <button class="btn btn-outline-success has-margin-auto my-2" routerLink="/funnel/initial-query"
           [disabled]="!amountForm.valid">CANCELAR</button>
       </form>
-  
-    
     </div>
   </div>
 

@@ -10,18 +10,20 @@
     <div [style.height]="'auto'" class="has-padding-10 justify-center align-center flex-column">
 
       <div class="text-center"> 
-        <h1 class="heading-1 mb-big">¡Felicidades! tienes pre aprobado un monto de</h1>
+        <!-- <h1 class="heading-1 mb-big"> tienes pre aprobado un monto de</h1> -->
+        <h1 class="heading-1 mb-medium">¡Felicidades!</h1>
+        <img src="assets/images/funnel/credit-approved.png" alt="" class="message-icon-wide mb-big">
          <h5 class="my-5"></h5>
-        <!-- <h3>Hola, {{data?.PrimerNombre || 'Danny'}} {{data?.PrimerApellido || 'Viasus'}}</h3> -->
+        <h3>El cliente , <b>{{data?.Nombre}}</b> con CC. <b>{{data?.NumeroIdentificacion}}</b> tiene <u>pre aprobado</u>  un monto de  </h3>
 
-        <h2 class="heading-1 mb-big">{{data?.MontoAprobado || availableAmount | currency:'$':'symbol':'0.0-0'}}</h2>
+        <h2 class="heading-1 mb-big">  $ {{data?.Cupo | number:'':'es'}} </h2>
 
-        <h5 class="my-5">¿Deseas continuar?</h5>
+        <h5 class="my-5">*Consulta con el cliente si desea continuar</h5>
 
         <div class="my-5">
           <button class="btn btn-success mx-auto my-2" (click)="continue()">SOLICITAR CRÉDITO</button>
           <br /> <br>
-          <button class="btn btn-success mx-auto my-2" (click)="finishFlow()">TERMINAR PROCESO</button>
+          <button class="btn btn-success mx-auto my-2" routerLink="/funnel/initial-query">TERMINAR PROCESO</button>
         </div>
       </div>
     </div>

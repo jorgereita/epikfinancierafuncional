@@ -13,14 +13,15 @@ export class DniComponent implements OnInit {
 
   param1: string;
   param2: string;
-  constructor(private route: ActivatedRoute) {debugger
+  creditNumber
+  constructor(private route: ActivatedRoute) { 
     let id = this.route.snapshot.paramMap.get("state");
   
     console.log(id); 
     // console.log(this.param1)
   }
   ngOnInit(): void {
-
+    this.creditNumber = JSON.parse(localStorage.getItem('dataCreditOk')).NumeroAutorizacion;
 }
  
 }

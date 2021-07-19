@@ -47,7 +47,11 @@ export class OccupationComponent implements OnInit {
         if (response.IdEstado == 11) {
           await this.router.navigateByUrl('/funnel/verify-payment');
         } else {
-          this.openSnackBar(response.Mensaje, 'Cerrar');
+          if(response.IdEstado == 98){
+            await this.router.navigateByUrl('/funnel/reject');
+          }else{
+            this.openSnackBar(response.Mensaje, 'Cerrar');
+          }
         }
       } else {
         this.openSnackBar(response.Mensaje, 'Cerrar');

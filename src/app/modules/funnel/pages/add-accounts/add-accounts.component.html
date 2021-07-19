@@ -13,16 +13,18 @@
       <p>
         Escoge una de tus cuentas para realizar el recaudo del crédito
       </p>
-
-      <div class="has-margin-top-30">
-       <div class="card card-option has-margin-top-10 has-margin-bottom-10 has-padding-10 flex-row align-items-center" [ngClass]="selected == 'bancolombia-0440' ? 'selected' : null" (click)="selected = 'bancolombia-0440'">
+      <div *ngIf="objDatosCuentas">
+              <div class="has-margin-top-30" *ngFor="let item of objDatosCuentas"> 
+       <div class="card card-option has-margin-top-10 has-margin-bottom-10 has-padding-10 flex-row align-items-center" [ngClass]="selected == item.IdDatoCuenta ? 'selected' : null" (click)="selected = item.IdDatoCuenta">
          <mat-icon>person_outline</mat-icon>
          <div class="flex-column has-margin-left-20">
-           <strong>Bancolombia - **** 0440</strong>
-           <div>Cuenta de Ahorros</div>
+           <strong>{{item.Entidad}} - **** {{getNumber(item.NumeroCuenta)}} </strong>
+           <div>{{item.TipoCuenta}}</div>
          </div>
        </div>
-        <div class="card card-option has-margin-top-10 has-margin-bottom-10 has-padding-10 flex-row align-items-center" [ngClass]="selected == 'davivienda-0540' ? 'selected' : null" (click)="selected = 'davivienda-0540'">
+      </div>
+
+        <!-- <div class="card card-option has-margin-top-10 has-margin-bottom-10 has-padding-10 flex-row align-items-center" [ngClass]="selected == 'davivienda-0540' ? 'selected' : null" (click)="selected = 'davivienda-0540'">
           <mat-icon>person_outline</mat-icon>
           <div class="flex-column has-margin-left-20">
             <strong>{{data?.AccountBank}} - **** {{data?.AccountNumber}}</strong>
@@ -35,19 +37,13 @@
            <strong>Bancolombia - **** 0480</strong>
            <div>Cuenta Corriente</div>
          </div>
-       </div>
-        <!-- <div class="card card-option has-margin-top-10 has-margin-bottom-10 has-padding-10 flex-row align-items-center" [ngClass]="selected == 'other' ? 'selected' : null" routerLink="/funnel/new-bank-account">
-          <mat-icon>dashboard_customize</mat-icon>
-          <div class="flex-column has-margin-left-20">
-            <strong>Añadir cuenta</strong>
-            <div>Añade una nueva cuenta</div>
-          </div>
-        </div> -->
+       </div> -->
+ 
       </div>
     </div>
 
     <div class="text-center has-margin-top-30">
-      <button class="btn btn-success" (click)="sendData()" [disabled]="!addAccountForm.valid || !selected">CONTINUAR</button>
+      <button class="btn btn-success" (click)="continue()" [disabled]="!addAccountForm.valid || !selected">CONTINUAR</button>
       <br /><br />
       <button class="btn btn-outline-success" (click)="skip()">SALTAR ESTE PASO</button>
     </div>

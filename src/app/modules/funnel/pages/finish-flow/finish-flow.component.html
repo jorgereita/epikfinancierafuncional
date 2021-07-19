@@ -12,7 +12,7 @@
       <b>{{userData.Nombre}} <br>con {{ccType}}. {{userData.NumeroIdentificacion}} <br>tiene aprobado hasta</b>
     </p>
     <p class="notification-text mb-big text-black">
-      <b>{{cupo | currency}}</b>
+      $ <b>{{cupo | number:'':'es'}}</b>
     </p>
 
     <div class="text-center">

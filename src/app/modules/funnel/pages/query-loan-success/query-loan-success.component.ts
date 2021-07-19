@@ -5,7 +5,8 @@ import {screens} from '../../../../utils/screens';
 import {FormBuilder} from '@angular/forms';
 import {DataService} from '../../../../services/data.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
-
+import { registerLocaleData } from '@angular/common';
+import es from '@angular/common/locales/es';
 @Component({
   selector: 'app-query-loan-success',
   templateUrl: './query-loan-success.component.html',
@@ -26,6 +27,7 @@ export class QueryLoanSuccessComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    registerLocaleData(es);
   }
 
   openSnackBar(message: string, action: string): void {
@@ -43,21 +45,22 @@ export class QueryLoanSuccessComponent implements OnInit {
       IdConsulta: parseInt(localStorage.getItem('IdConsulta'), 10),
       Acepta: true,
     };
-    this.dataService.financialGetUserInfo(formData).subscribe(async (response: any) => {
+    this.dataService.financialUserAgreement(formData).subscribe(async (response: any) => {
       if (response.IdError === 0) {
         localStorage.setItem('IdConsulta', response.IdConsulta);
         localStorage.setItem('NumeroDocumento', response.NumeroIdentificacion);
 
         this.loading = false;
+        const url = screens[response.IdPantalla];
+        await this.router.navigateByUrl(url);
         // set IdConsulta
-        if(response.PermiteCotizar){
-          await this.router.navigateByUrl('simulation');
-          // await this.router.navigateByUrl('finish-flow');
+        // if(response.PermiteCotizar){
+        //   await this.router.navigateByUrl('simulation');
+        //   // await this.router.navigateByUrl('finish-flow');
           
-        }else{
-          const url = screens[response.IdPantalla];
-          await this.router.navigateByUrl(url);
-        }
+        // }else{
+     
+        // }
       } else {
         this.openSnackBar(response.Mensaje, 'Cerrar');
         this.loading = false;

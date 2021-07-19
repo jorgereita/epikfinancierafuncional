@@ -3,7 +3,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { cleanData } from '../../../../utils/utils';
-
+import { registerLocaleData } from '@angular/common';
+import es from '@angular/common/locales/es';
 @Component({
   selector: 'app-finish-flow',
   templateUrl: './finish-flow.component.html',
@@ -47,6 +48,7 @@ export class FinishFlowComponent implements OnInit {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.ccType = this.documentTypes.find(key => key.Id == this.userData.IdTipoIdentificacion).Descripcion;
     this.cupo = parseInt(this.userData.Cupo);
+    registerLocaleData(es);
   }
 
   async goHome(): Promise<void> {

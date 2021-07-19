@@ -8,7 +8,14 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-
+  .mid {
+    flex-wrap: wrap;
+    p {
+      font-weight: 700;
+      color: white;
+      padding-bottom: 8px;
+    }
+  }
   &__logo {
     width: 33%;
     display: -webkit-box;

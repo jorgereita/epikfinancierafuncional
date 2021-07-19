@@ -16,7 +16,7 @@
      
       <div *ngIf="side === 'placeholder'">
         <img [src]="imageBack" class="backImg" alt="">
-        <p>Recuerda que allá foto se debe tomar sin reflejos de luz</p>
+        <!-- <p>Recuerda que allá foto se debe tomar sin reflejos de luz</p> -->
         <app-camera (pictureTaken)="handleImage2($event)" (cancelEvent)="cancelCamera1()"></app-camera>
         <!-- <ng-container *ngIf="screenOn2 && webcamImage2 == null">
           <app-camera (pictureTaken)="handleImage2($event)"></app-camera>
@@ -43,7 +43,7 @@
       </div>
       <div *ngIf="side === 'placeholder-inverse'">
         <img [src]="imageBack" class="backImg" alt="">
-        <p>Recuerda que allá foto se debe tomar sin reflejos de luz</p>
+        <!-- <p>Recuerda que allá foto se debe tomar sin reflejos de luz</p> -->
         <app-camera (pictureTaken)="handleImage3($event)" (cancelEvent)="cancelCamera2()"></app-camera>
         <!-- <p>Foto Adverso Cedula</p>
         <ng-container *ngIf="screenOn3 && webcamImage3 == null">
@@ -71,9 +71,9 @@
       </div>
     </div>
     <div class="info">
-      <p class="notification-text color-white" *ngIf="side === 'placeholder'">Ubique el frente del <br> documento dentro del recuadro</p>
+      <p class="notification-text color-white" *ngIf="side === 'placeholder'">Ubique el <u style="font-size: 2.7rem;">  frente </u>  del <br> documento dentro del recuadro</p>
       <p class="info-msg" *ngIf="side === 'placeholder'" >Recuerda que la foto se debe tomar sin reflejos de luz</p>
-      <p class="notification-text color-white" *ngIf="side === 'placeholder-inverse'">Ubique la parte posterior de <br>
+      <p class="notification-text color-white" *ngIf="side === 'placeholder-inverse'">Ubique la parte <u style="font-size: 2.7rem;">posterior</u> de <br>
         documento dentro del recuadro</p>
         <p class="info-msg"  *ngIf="side === 'placeholder-inverse'" >Recuerde que el código de barras del documento debe ser legible</p>
     </div>

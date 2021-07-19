@@ -3,7 +3,7 @@
 
   <div class="has-padding-20 text-center">
     <app-intersitial *ngIf="loading"></app-intersitial>
-    <h1 class="heading-1 mb-medium">Resumen del credito </h1>
+    <h1 class="heading-1 mb-medium">Resumen del crédito </h1>
     <!-- <img src="assets/images/funnel/succes.gif" width="100%" alt="success validation"> -->
 
     <p>
@@ -12,7 +12,7 @@
     </p>
     <ul >
       <li>
-        <b> Valor :</b> {{data?.Valor | currency}}
+        <b> Valor :</b> $ {{data?.Valor | number:'':'es'}}
       </li>
       <li>
         <b> Cuota :</b> {{data?.Cuota | currency}}

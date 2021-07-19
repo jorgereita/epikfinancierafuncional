@@ -45,6 +45,7 @@ export class BirthComponent implements OnInit {
       if (response.IdError === 0) {
         this.loading = false;
         if (response.IdEstado == 12) {
+          localStorage.setItem('dataCreditOk', JSON.stringify(response));
           await this.router.navigateByUrl('/funnel/success');
           // this.router.navigateByUrl(`/funnel/success/${true}`);
         } else {

@@ -7,24 +7,40 @@
     <div [style.height]="'auto'" class="justify-center align-center flex-column">
 
       <h1 class="heading-1 mb-medium">Datos adicionales</h1>
-
+      <p>Completar la información con los datos entregados por el cliente</p>
       <form [formGroup]="additionalDataForm" (submit)="sendData()" class="has-margin-top-20">
+
+        <div>
+          <label class="text-left label-small">Primer apellido*</label>
+          <mat-form-field style="width: 100%;">
+            <input matInput  formControlName="PrimerApellido" type="text"  autocomplete="off" >
+          </mat-form-field>
+        </div>
+        <div>
+          <label class="text-left label-small">Fecha de nacimiento*</label>
+          <!-- <mat-form-field style="width: 100%;">
+            <input matInput   formControlName="FechaNacimiento" type="date"  autocomplete="off" >
+          </mat-form-field> -->
+          <mat-form-field  style="width: 100%;">
+            <input matInput [matDatepicker]="picker" formControlName="FechaNacimiento" placeholder=""
+                (click)="forzarFecha(picker)"   />
+            <mat-icon matSuffix>calendar_today</mat-icon>
+            <mat-datepicker #picker="matDatepicker" ngDefaultControl >
+            </mat-datepicker>
+          </mat-form-field>
+        </div>
         <div>
           <label class="text-left label-small">Ingreso mensual*</label>
           <mat-form-field style="width: 100%;">
-            <!--            <input matInput minlenght="7" formControlName="IngresoMensual" mask="separator.2" thousandSeparator="," maxlength="13" autocomplete="off">-->
-            <input matInput minlenght="7" formControlName="IngresoMensual" type="tel" maxlength="13" autocomplete="off" mask="separator.2"
-              style="font-weight: 600;">
-            <!--            <mat-select formControlName="Ingresos">-->
-            <!--              <mat-option *ngFor="let option of incomeList" [value]="option.Id">{{option.Descripcion}}</mat-option>-->
-            <!--            </mat-select>-->
+            <input matInput minlenght="7" formControlName="IngresoMensual" thousandSeparator="." type="tel" maxlength="13" autocomplete="off"
+              mask="separator.2" style="font-weight: 600;">
             <mat-icon matPrefix style="font-size: 18px; position:relative; top:4px; font-weight: 600;">attach_money
             </mat-icon>
           </mat-form-field>
         </div>
 
         <div>
-          <label class="text-left label-small">Ocupación</label>
+          <label class="text-left label-small">Ocupación*</label>
           <mat-form-field style="width: 100%;">
             <!--            <input matInput minlenght="7" formControlName="Ocupacion" placeholder="Jefe de sistemas" mask="S*" maxlength="100" autocomplete="off">-->
             <mat-select formControlName="IdActividadEconomica">
@@ -33,7 +49,7 @@
           </mat-form-field>
         </div>
         <div>
-          <label class="text-left label-small">Actividad Economica</label>
+          <label class="text-left label-small">Actividad Economica*</label>
           <mat-form-field style="width: 100%;">
             <!--            <input matInput minlenght="7" formControlName="Ocupacion" placeholder="Jefe de sistemas" mask="S*" maxlength="100" autocomplete="off">-->
             <mat-select formControlName="CodigoCIIU">
@@ -62,7 +78,7 @@
         </div>
 
         <div>
-          <label class="text-left label-small">¿Realiza operaciones en moneda extranjera?</label>
+          <label class="text-left label-small">¿Realiza operaciones en moneda extranjera?*</label>
           <mat-form-field style="width: 100%;">
             <mat-select formControlName="MonedaExtranjera">
               <mat-option [value]="1">SÍ</mat-option>
@@ -100,14 +116,15 @@
 
         <div class="has-margin-top-20 text-center">
           <button *ngIf="!loading" class="btn btn-success has-margin-auto my-2 btn-block no-margin" type="submit"
-            [disabled]="!additionalDataForm.valid">Continuar</button>
-          <br><br>
-        
+            [disabled]="!additionalDataForm.valid">CONTINUAR</button>
+ 
+
           <button *ngIf="loading" class="btn btn-success has-margin-auto my-2 btn-block no-margin" type="submit"
             disabled>Guardando...</button>
           <br />
           <br />
-          <button class="btn btn-outline-success my-2 btn-block no-margin" routerLink="/funnel/initial-query">Cancelar</button>
+          <button class="btn btn-outline-success my-2 btn-block no-margin"
+            routerLink="/funnel/initial-query">CANCELAR</button>
         </div>
       </form>
     </div>

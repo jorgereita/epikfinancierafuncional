@@ -68,6 +68,7 @@ import { DniDetectorPresentationComponent } from './pages/dni-detector-presentat
 import { DniValidationSuccessfullComponent } from './pages/dni-validation-successfull/dni-validation-successfull.component';
 import { CameraComponent } from 'src/app/components/camera/camera.component';
 import { RejectpaymentComponent } from './pages/rejectpayment/rejectpayment.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
 @NgModule({
@@ -96,7 +97,7 @@ import { RejectpaymentComponent } from './pages/rejectpayment/rejectpayment.comp
     DniDetectorModule,
     MatRadioModule,
     FormsModule,
-    
+    MatDatepickerModule,
   ]
 })
 export class FunnelModule { }

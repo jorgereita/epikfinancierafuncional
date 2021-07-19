@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {Router} from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
-
+import { registerLocaleData } from '@angular/common';
+import es from '@angular/common/locales/es';
 @Component({
   selector: 'app-status',
   templateUrl: './status.component.html',
@@ -21,6 +22,7 @@ export class StatusComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    registerLocaleData(es);
   }
   openSnackBar(message: string, action: string): void {
     this.snackBar.open(message, action, {
@@ -39,7 +41,11 @@ export class StatusComponent implements OnInit {
         if (response.IdEstado == 8) {
           await this.router.navigateByUrl('/funnel/documents');
         } else {
-          this.openSnackBar(response.Mensaje, 'Cerrar');
+          if(response.IdEstado == 98){
+            await this.router.navigateByUrl('/funnel/reject');
+          }else{
+            this.openSnackBar(response.Mensaje, 'Cerrar');
+          }
         }
       } else {
         this.openSnackBar(response.Mensaje, 'Cerrar');

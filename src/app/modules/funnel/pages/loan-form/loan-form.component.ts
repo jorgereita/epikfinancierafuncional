@@ -76,8 +76,8 @@ export class LoanFormComponent implements OnInit {
       NumeroIdentificacion: localStorage.getItem('NumeroIdentificacion'),
     };
 
-    if (localStorage.getItem('path') === 'latest') {
-      localStorage.setItem('userData', JSON.stringify({...JSON.parse(localStorage.getItem('userData')), ...formData}));
+ 
+      // localStorage.setItem('userData', JSON.stringify({...JSON.parse(localStorage.getItem('userData')), ...formData}));
       formData = {
         IdConsulta: parseInt(localStorage.getItem('IdConsulta'), 10),
         ...this.personalInfoForm.value,
@@ -97,7 +97,7 @@ export class LoanFormComponent implements OnInit {
         }
       });
       // await this.router.navigateByUrl('/funnel/face-detector');
-    } 
+ 
     // else if (localStorage.getItem('path') === 'other') {
     //   localStorage.setItem('userData', JSON.stringify({...JSON.parse(localStorage.getItem('userData')), ...formData}));
     //   await this.router.navigateByUrl('/funnel/face-detector');

@@ -44,11 +44,20 @@ export class EmailConfirmComponent implements OnInit {
       if (response.IdError === 0) {
         this.loading = false;
         if (response.IdEstado == 6) {
+          localStorage.setItem('InfoAccounts', JSON.stringify(response));
           await this.router.navigateByUrl('/funnel/add-accounts');
         } else {
-          this.openSnackBar(response.Mensaje, 'Cerrar');
+          if (response.IdEstado == 2) {
+            localStorage.setItem('InfoAccounts', JSON.stringify(response));
+            await this.router.navigateByUrl('/simulation');
+          } else {
+            if(response.IdEstado == 98){
+              await this.router.navigateByUrl('/funnel/reject');
+            }else{
+              this.openSnackBar(response.Mensaje, 'Cerrar');
+            }
+          }
         }
-
       } else {
         this.openSnackBar(response.Mensaje, 'Cerrar');
         this.loading = false;

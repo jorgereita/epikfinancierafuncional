@@ -47,7 +47,11 @@ export class RejectpaymentComponent implements OnInit {
         if (response.IdEstado == 9) {
           await this.router.navigateByUrl('/funnel/validate-docs');
         } else {
-          this.openSnackBar(response.Mensaje, 'Cerrar');
+          if(response.IdEstado == 98){
+            await this.router.navigateByUrl('/funnel/reject');
+          }else{
+            this.openSnackBar(response.Mensaje, 'Cerrar');
+          }
         }
       } else {
         this.openSnackBar(response.Mensaje, 'Cerrar');

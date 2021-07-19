@@ -5,11 +5,21 @@ import {codigoCIIUList, incomeList, laboralAntiquityList, occupationList} from '
 import {screens} from '../../../../utils/screens';
 import {DataService} from '../../../../services/data.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
-
+import { MatDatepicker } from '@angular/material/datepicker';
+import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
+import { AppDateAdapter, APP_DATE_FORMATS } from './date.adapter';
 @Component({
   selector: 'app-additional-data',
   templateUrl: './additional-data.component.html',
-  styleUrls: ['./additional-data.component.scss']
+  styleUrls: ['./additional-data.component.scss'],
+  providers: [
+    {
+      provide: DateAdapter, useClass: AppDateAdapter
+    },
+    {
+      provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS
+    }
+  ]
 })
 export class AdditionalDataComponent implements OnInit {
   loading: any;
@@ -36,12 +46,16 @@ export class AdditionalDataComponent implements OnInit {
       IdAntiguedadLaboral: ['', Validators.required],
       Pep: ['', Validators.required],
       MonedaExtranjera: ['', Validators.required],
+      PrimerApellido: ['', Validators.required],
+      FechaNacimiento: ['', Validators.required],
     });
   }
 
   ngOnInit(): void {
   }
-
+  forzarFecha(picker: MatDatepicker<Date>) {
+    picker.open();
+  }
   loadData(): void {
     this.dataService.catalogos().subscribe(data => {
       if (data.IdError == 0) {
@@ -76,7 +90,7 @@ export class AdditionalDataComponent implements OnInit {
       // PEP: this.Pep,
       // MonedaExtranjera: this.MonedaExtranjera,
     };
-    
+     
     this.dataService.financialSaveExtraVariables(formData).subscribe(async (response: any) => {
       if (response.IdError === 0) {
         localStorage.setItem('IdConsulta', response.IdConsulta);

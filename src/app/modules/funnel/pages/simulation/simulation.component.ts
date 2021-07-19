@@ -78,7 +78,7 @@ export class SimulationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    registerLocaleData( es );
+    registerLocaleData(es);
   }
 
   openSnackBar(message: string, action: string): void {
@@ -98,8 +98,8 @@ export class SimulationComponent implements OnInit {
     this.dataService.cotizador(formData).subscribe(async (response: any) => {
       if (response.IdError === 0) {
         this.showDetails = true;
-        localStorage.setItem('userData', JSON.stringify(response));
-        this.ciclosFac =_.orderBy(response.CiclosFacturacion, ['IdCicloFacturacion'], ['desc']);
+        // localStorage.setItem('userData', JSON.stringify(response));
+        this.ciclosFac = _.orderBy(response.CiclosFacturacion, ['IdCicloFacturacion'], ['desc']);
         this.RespuestaSimulaciones = response.RespuestaSimulaciones;
         this.loading = false;
       } else {
@@ -116,23 +116,30 @@ export class SimulationComponent implements OnInit {
       "NumeroAutorizacion": this.data.NumeroAutorizacion,
       "IdSimulador": this.calcform.value.Cuotas,
       "IdCicloFacturacion": this.calcform.value.Tiempo
-  }
+    }
 
     this.dataService.guardarSimulacion(formData).subscribe(async (response: any) => {
       if (response.IdError === 0) {
-        if(response.IdEstado==4){
+        if (response.IdEstado == 4) {
           await this.router.navigateByUrl('/funnel/whatsappquote');
-        }else{
-          this.openSnackBar(response.Mensaje, 'Cerrar');
+        } else {
+          if(response.IdEstado == 98){
+            await this.router.navigateByUrl('/funnel/reject');
+          }else{
+            this.openSnackBar(response.Mensaje, 'Cerrar');
+          }
         }
-        
+
       } else {
         this.openSnackBar(response.Mensaje, 'Cerrar');
         this.loading = false;
       }
     });
   }
-
+  getDay() {
+    const date = this.ciclosFac.find(e => e.IdCicloFacturacion == this.calcform.value.Tiempo)?.FechaFacturacion
+      return date.split("-")[2]
+  }
   async sendViaWapp(): Promise<void> {
     this.loading = true;
 

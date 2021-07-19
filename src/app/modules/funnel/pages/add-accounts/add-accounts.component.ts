@@ -14,6 +14,7 @@ export class AddAccountsComponent implements OnInit {
   loading = false;
   selected: string;
   addAccountForm: FormGroup;
+  objDatosCuentas
   terms = [
     {
       Id: 1,
@@ -49,11 +50,20 @@ export class AddAccountsComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {
     this.data = JSON.parse(localStorage.getItem('userData'));
+    this.objDatosCuentas =  JSON.parse(localStorage.getItem('InfoAccounts')).objDatosCuentas;
+  //   this.objDatosCuentas.push( {
+  //     "IdDatoCuenta":30,
+  //     "TipoCuenta":"CuentaAhorro",
+  //     "NumeroCuenta":"060036492",
+  //     "Entidad":"B. FALABELLA   AHORROS"
+  //  })
     this.addAccountForm = this.formBuilder.group({
       Fecha: ['5', [Validators.required]],
     });
   }
-
+  getNumber(account){
+    return account.slice(account.length-4,account.length)
+  }
   ngOnInit(): void {
   }
 
@@ -90,9 +100,40 @@ export class AddAccountsComponent implements OnInit {
       duration: 3000,
     });
   }
+   async continue(): Promise<void> {
+ 
+    
+    let formData = {
+      "NumeroIdentificacion": this.data.NumeroIdentificacion ? this.data.NumeroIdentificacion : localStorage.getItem('NumeroDocumento'),
+      "NumeroAutorizacion": this.data.NumeroAutorizacion,
+      "IdDatoCuenta":this.selected,
+      "ClientePasa": false
+    }
+    this.loading = true;
+    this.dataService.guardarInfoRecaudo(formData).subscribe(async (response: any) => {
+      if (response.IdError === 0) {
+        this.loading = false;
+        if (response.IdEstado == 7) {
+          localStorage.setItem('userData', JSON.stringify(response));
+          await this.router.navigateByUrl('/funnel/status');
+        } else {
+          if(response.IdEstado == 98){
+            await this.router.navigateByUrl('/funnel/reject');
+          }else{
+            this.openSnackBar(response.Mensaje, 'Cerrar');
+          }
+         
+        }
+
+      } else {
+        this.openSnackBar(response.Mensaje, 'Cerrar');
+        this.loading = false;
+      }
+    });
+  }
   async skip(): Promise<void> {
  
-
+    
     let formData = {
       "NumeroIdentificacion": this.data.NumeroIdentificacion ? this.data.NumeroIdentificacion : localStorage.getItem('NumeroDocumento'),
       "NumeroAutorizacion": this.data.NumeroAutorizacion,
@@ -107,7 +148,11 @@ export class AddAccountsComponent implements OnInit {
           localStorage.setItem('userData', JSON.stringify(response));
           await this.router.navigateByUrl('/funnel/status');
         } else {
-          this.openSnackBar(response.Mensaje, 'Cerrar');
+          if(response.IdEstado == 98){
+            await this.router.navigateByUrl('/funnel/reject');
+          }else{
+            this.openSnackBar(response.Mensaje, 'Cerrar');
+          }
         }
 
       } else {
