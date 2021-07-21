@@ -17,6 +17,9 @@ export class CameraComponent implements OnInit {
   public allowCameraSwitch = true;
   public multipleWebcamsAvailable = false;
   public deviceId: string;
+  public flagPhotonOn = false;
+  public webcamImageResp ;
+  // imageSrc = 'assets/f';
   public videoOptions: MediaTrackConstraints = {
     width: { ideal: 1250 },
     height: { ideal: 850 }
@@ -38,6 +41,8 @@ export class CameraComponent implements OnInit {
   }
 
   public triggerSnapshot(): void {
+    
+    this.showWebcam = false;
     this.trigger.next();
   }
 
@@ -48,7 +53,15 @@ export class CameraComponent implements OnInit {
   public handleInitError(error: WebcamInitError): void {
     this.errors.push(error);
   }
-
+  public continue(): void{
+    this.pictureTaken.emit(this.webcamImageResp);
+   
+    
+  }
+  public restart(): void{
+    this.showWebcam = true;
+    this.webcamImageResp = null;
+  }
   public showNextWebcam(directionOrDeviceId: boolean | string): void {
     // true => move forward through devices
     // false => move backwards through devices
@@ -58,7 +71,8 @@ export class CameraComponent implements OnInit {
 
   public handleImage(webcamImage: WebcamImage): void {
     // console.info('received webcam image', webcamImage);
-    this.pictureTaken.emit(webcamImage);
+    this.webcamImageResp = webcamImage
+    
   }
 
   public cameraWasSwitched(deviceId: string): void {
@@ -73,7 +87,7 @@ export class CameraComponent implements OnInit {
   public get nextWebcamObservable(): Observable<boolean | string> {
     return this.nextWebcam.asObservable();
   }
-  public emitCancel(){
+  public emitCancel() {
     this.cancelEvent.emit(true);
   }
 }

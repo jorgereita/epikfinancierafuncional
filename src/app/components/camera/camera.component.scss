@@ -16,11 +16,24 @@
   ul.links {
     padding-bottom: 20px;
   }
+  .buttons-grid{
+    display: flex;
+    z-index: 10000;
+    position: fixed;
+    width: 100%;
+    top: 80%;
+    
+  }
+  .button-camera-action{
+    width: 50%;
+  }
+  .orange{
+    background: $color-orange !important;
+  }
   .button-camera {
     display: flex;
     align-items: center;
     justify-content: center;   
-    position: absolute;
     z-index: 10000;
     position: fixed;
     top: 80%;
@@ -37,4 +50,13 @@
     position: fixed;
     top: 90%;
     font-size: 2rem;
+  }
+  .circle{
+    width: 98%;
+    height: auto;
+    position: fixed;
+    top: 14%;
+    left: 0px;
+    // -webkit-transform: scaleX(-1);
+    // transform: scaleX(-1);
   }

@@ -44,6 +44,7 @@ import {FeceDetectorPresentationComponent} from './pages/fece-detector-presentat
 import {DniDetectorPresentationComponent} from './pages/dni-detector-presentation/dni-detector-presentation.component';
 import {DniValidationSuccessfullComponent} from './pages/dni-validation-successfull/dni-validation-successfull.component';
 import { RejectpaymentComponent } from './pages/rejectpayment/rejectpayment.component';
+import { RejectmegabaseComponent } from './pages/rejectmegabase/rejectmegabase.component';
 
 const routes: Routes = [
   {
@@ -221,6 +222,10 @@ const routes: Routes = [
   {
     path: 'reject-payment',
     component: RejectpaymentComponent,
+  },
+  {
+    path: 'reject-megabase',
+    component: RejectmegabaseComponent,
   },
 ];
 

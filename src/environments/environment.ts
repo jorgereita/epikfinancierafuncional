@@ -4,8 +4,10 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://desarrollo.epik.com.co:5001/', // API url for Financiera
-  externalBaseUrl: 'https://desarrollo.epik.com.co:5001/', // API url for external services
+  baseUrl: 'https://desarrollo.epik.com.co:5002/', // Desarrollo - Demo
+  externalBaseUrl: 'https://desarrollo.epik.com.co:5002/', // Desarrollo - Demo
+  // baseUrl: 'https://desarrollo.epik.com.co:5001/', // Pre Produccion
+  // externalBaseUrl: 'https://desarrollo.epik.com.co:5001/', // Pre Produccion
   firebaseConfig: {
     apiKey: 'AIzaSyDOoCEREIqN7XFvXWFcs3L3Cvzmysm3M04',
     authDomain: 'financiera-epik.firebaseapp.com',
